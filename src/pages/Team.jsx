@@ -9,7 +9,7 @@ const Team = () => {
     { 
       name: 'Manoj Kumar Singh', 
       position: 'Managing Director', 
-      image: 'Professional portrait of Manoj Kumar Singh in business attire', 
+      image: '/images/team/MD.jpg',
       bio: 'Visionary leader with 25+ years of experience in healthcare infrastructure. Founded Unik Surgical in 2000 and has led the company to become a trusted name in Eastern India.',
       experience: '25+ Years',
       education: 'B.Tech Mechanical Engineering',
@@ -105,6 +105,74 @@ const Team = () => {
             <p className="text-xl opacity-90">
               Meet the experts driving innovation in healthcare infrastructure
             </p>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="font-poppins text-4xl font-bold text-gray-800 mb-4">
+              Meet the Visionary Behind Our Success
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Manoj Kumar Singh, our Managing Director, has been the driving force behind Unik Surgical's growth and innovation in healthcare infrastructure.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+          >
+            <div className="relative">
+              <img
+                src="/images/team/MD.jpg"
+                alt="Manoj Kumar Singh - Managing Director"
+                className="w-full rounded-lg shadow-lg object-cover h-96"
+              />
+            </div>
+
+            <div>
+              <h3 className="font-poppins text-3xl font-bold text-gray-800 mb-2">Manoj Kumar Singh</h3>
+              <p className="text-primary-blue font-semibold text-xl mb-4">Managing Director</p>
+              <p className="text-gray-600 text-lg mb-6">
+                Visionary leader with 25+ years of experience in healthcare infrastructure. Founded Unik Surgical in 2000 and has led the company to become a trusted name in Eastern India.
+              </p>
+              <div className="mb-6">
+                <div className="flex justify-between text-sm text-gray-500 mb-2">
+                  <span>Experience: <span className="font-medium text-primary-blue">25+ Years</span></span>
+                  <span>Education: <span className="font-medium text-primary-blue">B.Tech Mechanical Engineering</span></span>
+                </div>
+                <h4 className="text-sm font-semibold text-gray-700 mb-2">Expertise:</h4>
+                <div className="flex flex-wrap gap-2">
+                  {['Strategic Planning', 'Business Development', 'Healthcare Infrastructure'].map((skill) => (
+                    <span key={skill} className="px-3 py-1 bg-soft-cyan text-primary-blue text-sm rounded-full">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div className="flex space-x-4">
+                <motion.a href="mailto:manoj@uniksurgical.com" whileHover={{ scale: 1.2, y: -2 }} className="p-3 bg-primary-blue text-white rounded-full hover:bg-blue-700 transition-colors">
+                  <Mail className="h-5 w-5" />
+                </motion.a>
+                <motion.a href="tel:+919876543210" whileHover={{ scale: 1.2, y: -2 }} className="p-3 bg-highlight-green text-white rounded-full hover:bg-green-700 transition-colors">
+                  <Phone className="h-5 w-5" />
+                </motion.a>
+                <motion.a href="#" whileHover={{ scale: 1.2, y: -2 }} className="p-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors">
+                  <Linkedin className="h-5 w-5" />
+                </motion.a>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>

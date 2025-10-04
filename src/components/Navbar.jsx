@@ -177,7 +177,7 @@ const Navbar = () => {
                 onClick={() => setIsOpen(false)}
               />
               <motion.div
-                className="fixed top-0 right-0 h-full w-80 bg-white shadow-xl z-50 md:hidden"
+                className="fixed top-0 right-0 h-full w-full bg-white shadow-xl z-50 md:hidden"
                 initial={{ x: '100%' }}
                 animate={{ x: 0 }}
                 exit={{ x: '100%' }}

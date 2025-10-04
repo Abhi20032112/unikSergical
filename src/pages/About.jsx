@@ -131,7 +131,7 @@ const About = () => {
           >
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
               <div className="text-center">
-                <img class="w-48 h-48 rounded-full mx-auto mb-4 object-cover shadow-lg" alt="Manoj Kumar Singh - Managing Director" src="https://images.unsplash.com/photo-1561034531-0a8fe9cbb8fd" />
+                <img class="w-48 h-48 rounded-full mx-auto mb-4 object-cover shadow-lg" alt="Manoj Kumar Singh - Managing Director" src="/images/team/MD.jpg" />
                 <h3 className="font-poppins text-2xl font-bold text-primary-blue mb-2">
                   Manoj Kumar Singh
                 </h3>
