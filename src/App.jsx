@@ -14,6 +14,7 @@ import Clients from '@/pages/Clients';
 import Contact from '@/pages/Contact';
 import Certifications from '@/pages/Certifications';
 import Team from '@/pages/Team';
+import WhatsAppFloat from '@/components/WhatsAppFloat';
 import { AnimatePresence } from 'framer-motion';
 
 function App() {
@@ -61,6 +62,7 @@ function App() {
       </AnimatePresence>
       
       <Footer />
+      <WhatsAppFloat />
       <Toaster />
     </div>
   );

@@ -549,7 +549,6 @@ const Products = () => {
                         transition={{ duration: 0.4, delay: index * 0.1 }}
                         className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg hover:scale-105 transition-shadow transform-gpu"
                       >
-                        <img src={`/images/INSTRUMENT'S IMAGES/${item.replace(/\s+/g, '_')}.png`} alt={item} className="w-full h-48 object-cover rounded mb-4" />
                         <h4 className="font-semibold text-gray-800 mb-2">{item}</h4>
                         <p className="text-sm text-gray-600">Precision surgical instruments for medical procedures.</p>
                       </motion.div>
@@ -569,7 +568,6 @@ const Products = () => {
                         transition={{ duration: 0.4, delay: index * 0.1 }}
                         className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg hover:scale-105 transition-shadow transform-gpu"
                       >
-                        <img src={`/images/INSTRUMENT'S IMAGES/${item.replace(/\s+/g, '_')}.png`} alt={item} className="w-full h-48 object-cover rounded mb-4" />
                         <h4 className="font-semibold text-gray-800 mb-2">{item}</h4>
                         <p className="text-sm text-gray-600">Essential diagnostic tools for accurate medical assessment.</p>
                       </motion.div>
@@ -589,7 +587,6 @@ const Products = () => {
                         transition={{ duration: 0.4, delay: index * 0.1 }}
                         className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg hover:scale-105 transition-shadow transform-gpu"
                       >
-                        <img src={`/images/INSTRUMENT'S IMAGES/${item.replace(/\s+/g, '_')}.png`} alt={item} className="w-full h-48 object-cover rounded mb-4" />
                         <h4 className="font-semibold text-gray-800 mb-2">{item}</h4>
                         <p className="text-sm text-gray-600">Support equipment for patient care and medical procedures.</p>
                       </motion.div>
@@ -604,6 +601,72 @@ const Products = () => {
       </section>
 
       <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="font-poppins text-4xl font-bold text-gray-800 mb-6">Product Images</h2>
+            <p className="text-xl text-gray-600">Browse through our complete collection of product images</p>
+          </motion.div>
+
+          <Tabs defaultValue="furniture-images" className="w-full">
+            <TabsList className="grid w-full grid-cols-2 max-w-md mx-auto mb-12">
+              <TabsTrigger value="furniture-images" className="font-poppins">Furniture Images</TabsTrigger>
+              <TabsTrigger value="instrument-images" className="font-poppins">Instrument Images</TabsTrigger>
+            </TabsList>
+
+            <TabsContent value="furniture-images">
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                  {furnitureImages.map((item, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.3 }}
+                      transition={{ duration: 0.4, delay: index * 0.05 }}
+                      className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg hover:scale-105 transition-shadow transform-gpu"
+                    >
+                      <img src={`/images/furniture/${item}`} alt={item.replace('.png', '')} className="w-full h-48 object-cover" />
+                      <div className="p-4">
+                        <h4 className="font-semibold text-gray-800 text-sm">{item.replace('.png', '')}</h4>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            </TabsContent>
+
+            <TabsContent value="instrument-images">
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                  {instrumentImages.map((item, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.3 }}
+                      transition={{ duration: 0.4, delay: index * 0.05 }}
+                      className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg hover:scale-105 transition-shadow transform-gpu"
+                    >
+                      <img src={`/images/INSTRUMENT'S IMAGES/${item}`} alt={item.replace('.png', '')} className="w-full h-48 object-cover" />
+                      <div className="p-4">
+                        <h4 className="font-semibold text-gray-800 text-sm">{item.replace('.png', '')}</h4>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            </TabsContent>
+          </Tabs>
+        </div>
+      </section>
+
+      <section className="py-20 bg-light-bg">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -662,58 +725,6 @@ const Products = () => {
             </div>
           </section>
 
-          <section className="py-20 bg-white">
-            <div className="container mx-auto px-4">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="text-center mb-12"
-              >
-                <h2 className="font-poppins text-4xl font-bold text-gray-800 mb-6">Product Images</h2>
-                <p className="text-xl text-gray-600">Browse our comprehensive collection of medical furniture and surgical instruments.</p>
-              </motion.div>
-              <div className="space-y-12">
-                <div>
-                  <h3 className="font-poppins text-2xl font-bold text-gray-800 mb-6 text-center">Furniture Images</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                    {furnitureImages.map((image, index) => (
-                      <motion.div
-                        key={`furniture-${index}`}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.3 }}
-                        transition={{ duration: 0.4, delay: (index % 12) * 0.05 }}
-                        className="bg-white rounded-lg shadow-md p-4 hover:shadow-lg hover:scale-105 transition-shadow transform-gpu"
-                      >
-                        <img src={`/processed_images/processed_${image}`} alt={image.replace('.png', '')} className="w-full h-48 object-cover rounded" />
-                        <p className="text-sm text-gray-600 mt-2 text-center">{image.replace('.png', '')}</p>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <h3 className="font-poppins text-2xl font-bold text-gray-800 mb-6 text-center">Instrument Images</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                    {instrumentImages.map((image, index) => (
-                      <motion.div
-                        key={`instrument-${index}`}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.3 }}
-                        transition={{ duration: 0.4, delay: (index % 12) * 0.05 }}
-                        className="bg-white rounded-lg shadow-md p-4 hover:shadow-lg hover:scale-105 transition-shadow transform-gpu"
-                      >
-                        <img src={encodeURI(`/images/INSTRUMENT'S IMAGES/${image}`)} alt={image.replace('.png', '')} className="w-full h-48 object-cover rounded" />
-                        <p className="text-sm text-gray-600 mt-2 text-center">{image.replace('.png', '')}</p>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
     </motion.div>
   );
 };

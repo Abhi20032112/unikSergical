@@ -6,7 +6,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Stethoscope, HeartPulse, PlusSquare } from 'lucide-react';
 import { Button } from '@/ui/button';
 import { toast } from '@/ui/use-toast';
 
@@ -68,11 +68,11 @@ const HeroSlider = () => {
     return <Particle key={i} className={colorClass} style={style} />;
   });
 
-  // Floating 3D objects
+  // Floating 3D objects replaced with icons
   const floatingObjects = [
-    { shape: 'circle', size: 'w-8 h-8', color: 'bg-accent-green/20', delay: 0 },
-    { shape: 'square', size: 'w-6 h-6', color: 'bg-primary-blue/20', delay: 2 },
-    { shape: 'triangle', size: 'w-10 h-10', color: 'bg-accent-gold/20', delay: 4 },
+    { icon: Stethoscope, size: 'w-8 h-8', color: 'text-accent-green/40', delay: 0 },
+    { icon: HeartPulse, size: 'w-10 h-10', color: 'text-primary-blue/40', delay: 2 },
+    { icon: PlusSquare, size: 'w-8 h-8', color: 'text-accent-gold/40', delay: 4 },
   ];
 
   return (
@@ -82,11 +82,11 @@ const HeroSlider = () => {
         {particles}
       </div>
 
-      {/* Floating 3D objects */}
+      {/* Floating 3D icons */}
       {floatingObjects.map((obj, index) => (
         <motion.div
           key={index}
-          className={`absolute ${obj.size} ${obj.color} rounded-full`}
+          className={`absolute ${obj.color}`}
           style={{
             top: `${20 + index * 20}%`,
             left: `${10 + index * 30}%`,
@@ -102,7 +102,9 @@ const HeroSlider = () => {
             ease: 'easeInOut',
             delay: obj.delay,
           }}
-        />
+        >
+          <obj.icon className={`${obj.size} drop-shadow-lg`} />
+        </motion.div>
       ))}
 
       {/* Parallax background elements */}
