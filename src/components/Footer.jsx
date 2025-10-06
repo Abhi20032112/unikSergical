@@ -22,7 +22,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative animated-gradient text-white overflow-hidden">
+    <footer className="relative animated-gradient text-white overflow-hidden perspective-1000" style={{ transformStyle: 'preserve-3d' }}>
       <div className="absolute inset-0 pointer-events-none">
         {medicalIcons.map((item, index) => (
           <motion.div
@@ -31,11 +31,14 @@ const Footer = () => {
             style={{
               left: `${10 + index * 18}%`,
               top: '50%',
+              transformStyle: 'preserve-3d',
+              perspective: 1000,
             }}
             animate={{
               y: item.y,
               x: item.x,
-              rotate: [0, 180, 360],
+              rotateX: [0, 20, -20, 0],
+              rotateY: [0, 30, -30, 0],
             }}
             transition={{
               duration: item.duration,
@@ -49,7 +52,13 @@ const Footer = () => {
         ))}
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 py-16">
+      <motion.div
+        className="relative z-10 container mx-auto px-4 py-16"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+      >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="space-y-4">
             <Link to="/" className="flex items-center space-x-2">
@@ -101,7 +110,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <Phone className="h-4 w-4" />
-                <span className="text-sm">+91 XXX XXX XXXX</span>
+                <span className="text-sm">+91 93340 12345</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="h-4 w-4" />
@@ -109,18 +118,20 @@ const Footer = () => {
               </div>
             </div>
 
-            <div className="flex space-x-4 mt-6">
-              {[Facebook, Twitter, Linkedin, Instagram].map((Icon, index) => (
-                <motion.a
-                  key={index}
-                  href="#"
-                  whileHover={{ scale: 1.2, y: -2, color: '#00F2A9' }}
-                  className="p-2 bg-white/10 rounded-full cursor-pointer hover:bg-white/20 transition-colors"
-                >
-                  <Icon className="h-4 w-4" />
-                </motion.a>
-              ))}
-            </div>
+        <div className="flex space-x-4 mt-6">
+          {[Facebook, Twitter, Linkedin, Instagram].map((Icon, index) => (
+            <motion.a
+              key={index}
+              href="#"
+              whileHover={{ scale: 1.2, y: -2, color: '#00F2A9', rotateY: 180 }}
+              transition={{ duration: 0.6, ease: 'easeInOut' }}
+              className="p-2 bg-white/10 rounded-full cursor-pointer hover:bg-white/20 transition-colors"
+              style={{ transformStyle: 'preserve-3d' }}
+            >
+              <Icon className="h-4 w-4" />
+            </motion.a>
+          ))}
+        </div>
           </div>
         </div>
 
@@ -132,7 +143,7 @@ const Footer = () => {
             Managed by <a href="https://ards.in" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#00F2A9]">Alpenrose digital solutions</a>
           </p>
         </div>
-      </div>
+      </motion.div>
     </footer>
   );
 };

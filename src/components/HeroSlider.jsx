@@ -68,12 +68,50 @@ const HeroSlider = () => {
     return <Particle key={i} className={colorClass} style={style} />;
   });
 
+  // Floating 3D objects
+  const floatingObjects = [
+    { shape: 'circle', size: 'w-8 h-8', color: 'bg-accent-green/20', delay: 0 },
+    { shape: 'square', size: 'w-6 h-6', color: 'bg-primary-blue/20', delay: 2 },
+    { shape: 'triangle', size: 'w-10 h-10', color: 'bg-accent-gold/20', delay: 4 },
+  ];
+
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section className="relative h-screen w-full overflow-hidden pt-16 animate-gradient-x" style={{ backgroundImage: 'linear-gradient(45deg, #1e3a8a, #06b6d4, #f59e0b)' }}>
       {/* Particle background */}
       <div className="particle-bg">
         {particles}
       </div>
+
+      {/* Floating 3D objects */}
+      {floatingObjects.map((obj, index) => (
+        <motion.div
+          key={index}
+          className={`absolute ${obj.size} ${obj.color} rounded-full`}
+          style={{
+            top: `${20 + index * 20}%`,
+            left: `${10 + index * 30}%`,
+          }}
+          animate={{
+            y: [0, -20, 0],
+            rotateY: [0, 180, 360],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{
+            duration: 8 + index * 2,
+            repeat: Infinity,
+            ease: 'easeInOut',
+            delay: obj.delay,
+          }}
+        />
+      ))}
+
+      {/* Parallax background elements */}
+      <motion.div
+        className="absolute inset-0 bg-gradient-to-r from-primary-blue/10 to-accent-green/10"
+        style={{ y: 0 }}
+        animate={{ y: [-10, 10, -10] }}
+        transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
+      />
       <Swiper
         modules={[Navigation, Pagination, Autoplay, EffectFade]}
         spaceBetween={0}

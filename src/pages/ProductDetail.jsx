@@ -76,11 +76,13 @@ const ProductDetail = () => {
       </Button>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-        <div className="overflow-hidden rounded-lg shadow-lg">
-          <img
+        <div className="overflow-hidden rounded-lg shadow-lg hover-tilt-3d">
+          <motion.img
             src={''}
             alt={product.name}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover hover-pop-3d"
+            whileHover={{ scale: 1.1 }}
+            transition={{ duration: 0.3 }}
           />
         </div>
 

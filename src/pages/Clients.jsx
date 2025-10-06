@@ -3,6 +3,11 @@ import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { Users, Award, Building, MapPin } from 'lucide-react';
 import { toast } from '@/ui/use-toast';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 const Clients = () => {
   const clients = [
@@ -181,48 +186,70 @@ const Clients = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {clients.map((client, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group"
-              >
-                <div className="card-hover bg-white rounded-xl shadow-lg overflow-hidden text-center">
-                  <div className="relative overflow-hidden h-48">
-                    <img className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" alt={client.name} src={client.logo || "https://images.unsplash.com/photo-1551190822-a9333d879b1f"} />
-                    <div className="absolute top-4 right-4 bg-primary-blue text-white px-3 py-1 rounded-full text-sm font-medium">
-                      {client.type}
-                    </div>
-                  </div>
-
-                  <div className="p-6">
-                    <h3 className="font-poppins text-xl font-bold text-gray-800 mb-2">
-                      {client.name}
-                    </h3>
-                    <div className="flex items-center justify-center text-gray-600 mb-3">
-                      <MapPin className="h-4 w-4 mr-1" />
-                      <span className="text-sm">{client.location}</span>
-                    </div>
-                    <p className="text-gray-600 text-sm mb-4 italic">"{client.testimonial}"</p>
-
-                    <div className="mb-4">
-                      <h4 className="text-sm font-semibold text-gray-700 mb-2">Projects Completed:</h4>
-                      <div className="flex flex-wrap gap-1 justify-center">
-                        {client.projects.map((project, projectIndex) => (
-                          <span key={projectIndex} className="px-2 py-1 bg-soft-cyan text-primary-blue text-xs rounded-full">
-                            {project}
-                          </span>
-                        ))}
+          <div className="relative">
+            <Swiper
+              modules={[Autoplay, Navigation, Pagination]}
+              spaceBetween={30}
+              slidesPerView={1}
+              autoplay={{
+                delay: 3000,
+                disableOnInteraction: false,
+                reverseDirection: false,
+              }}
+              loop={true}
+              navigation={{
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+              }}
+              pagination={{
+                el: '.swiper-pagination',
+                clickable: true,
+              }}
+              breakpoints={{
+                640: {
+                  slidesPerView: 2,
+                },
+                768: {
+                  slidesPerView: 3,
+                },
+                1024: {
+                  slidesPerView: 4,
+                },
+              }}
+              className="pb-12"
+            >
+              {clients.map((client, index) => (
+                <SwiperSlide key={index}>
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    className="group text-center"
+                  >
+                    <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
+                      <div className="h-24 flex items-center justify-center mb-4">
+                        <img
+                          className="max-h-full max-w-full object-contain group-hover:scale-110 transition-transform duration-300"
+                          alt={client.name}
+                          src={client.logo || "https://images.unsplash.com/photo-1551190822-a9333d879b1f"}
+                        />
+                      </div>
+                      <h3 className="font-poppins text-lg font-bold text-gray-800 mb-2">
+                        {client.name}
+                      </h3>
+                      <div className="flex items-center justify-center text-gray-600">
+                        <MapPin className="h-4 w-4 mr-1" />
+                        <span className="text-sm">{client.location}</span>
                       </div>
                     </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+                  </motion.div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+            <div className="swiper-button-prev absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-primary-blue text-white p-2 rounded-full hover:bg-primary-blue/80 transition-colors"></div>
+            <div className="swiper-button-next absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-primary-blue text-white p-2 rounded-full hover:bg-primary-blue/80 transition-colors"></div>
+            <div className="swiper-pagination mt-4"></div>
           </div>
         </div>
       </section>

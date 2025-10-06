@@ -7,7 +7,8 @@ import { useToast } from '@/ui/use-toast';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [productDropdown, setProductDropdown] = useState(false);
+  const [productDropdown, setProductDropdown] = useState(null);
+  const [openCategory, setOpenCategory] = useState(null);
   const location = useLocation();
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -27,15 +28,31 @@ const Navbar = () => {
     { name: 'Contact', path: '/contact', icon: Mail },
   ];
 
-  const productSubItems = [
-    { name: 'Medical Furniture', path: '/products/medical-furniture', icon: Bed },
-    { name: 'Surgical Instruments', path: '/products/surgical-instruments', icon: Scissors },
+  const productCategories = [
+    {
+      name: 'Furniture Catalog',
+      icon: Bed,
+      subItems: [
+        { name: 'Medical Furniture', path: '/products/medical-furniture' },
+        { name: 'Non-Medical Furniture', path: '/products/non-medical-furniture' }
+      ]
+    },
+    {
+      name: 'Instrument Catalogue',
+      icon: Scissors,
+      subItems: [
+        { name: 'Surgical Instruments', path: '/products/surgical-instruments' },
+        { name: 'Diagnostic Instruments', path: '/products/diagnostic-instruments' },
+        { name: 'Support Instruments', path: '/products/support-instruments' }
+      ]
+    }
   ];
 
   const handleProductClick = (path) => {
     navigate(path);
     setProductDropdown(false);
     setIsOpen(false);
+    setOpenCategory(null);
   };
 
   const navContainerVariants = {
@@ -57,10 +74,16 @@ const Navbar = () => {
       transition: { duration: 0.5, ease: 'easeOut' }
     },
     hover: {
-      y: -2,
-      scale: 1.05,
-      color: "var(--primary-blue)",
-      transition: { duration: 0.2 }
+      y: -5,
+      scale: [1, 1.1, 1],
+      rotateY: 15,
+      color: "var(--accent-green)",
+      textShadow: "0 0 15px rgba(6, 182, 212, 0.8), 0 5px 10px rgba(0,0,0,0.3)",
+      boxShadow: "0 10px 20px rgba(0,0,0,0.2)",
+      transition: {
+        duration: 0.3,
+        scale: { repeat: Infinity, duration: 1.5, ease: "easeInOut" }
+      }
     },
     tap: { scale: 0.95 }
   };
@@ -113,45 +136,93 @@ const Navbar = () => {
               <motion.div
                 key={item.name}
                 className="relative"
-                onHoverStart={() => item.dropdown && setProductDropdown(true)}
-                onHoverEnd={() => item.dropdown && setProductDropdown(false)}
                 initial="hidden"
                 animate="visible"
                 variants={navItemVariants}
                 whileHover="hover"
                 whileTap="tap"
               >
-                <Link
-                  to={item.path}
-                  className={`flex items-center space-x-2 font-medium transition-colors p-2 rounded-lg ${
+                <div
+                  className={`flex items-center space-x-2 font-medium transition-colors p-2 rounded-lg cursor-pointer ${
                     location.pathname.startsWith(item.path) && item.path !== '/' || location.pathname === item.path
                       ? 'text-white bg-white/20'
                       : 'text-white hover:text-white hover:bg-white/10'
                   }`}
+                  onClick={() => {
+                    if (item.dropdown) {
+                      if (productDropdown === item.name) {
+                        setProductDropdown(null);
+                        setOpenCategory(null);
+                      } else {
+                        setProductDropdown(item.name);
+                        setOpenCategory(null);
+                      }
+                    } else {
+                      navigate(item.path);
+                      setProductDropdown(null);
+                      setOpenCategory(null);
+                    }
+                  }}
                 >
                   <motion.div variants={iconVariants}><item.icon className="h-5 w-5" /></motion.div>
                   <span>{item.name}</span>
-                  {item.dropdown && <ChevronDown className={`h-4 w-4 transition-transform ${productDropdown ? 'rotate-180' : ''}`} />}
-                </Link>
+                  {item.dropdown && <ChevronDown className={`h-4 w-4 transition-transform ${productDropdown === item.name ? 'rotate-180' : ''}`} />}
+                </div>
                 {item.dropdown && (
                   <AnimatePresence>
-                    {productDropdown && (
+                    {productDropdown === item.name && (
                       <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 20 }}
                         transition={{ duration: 0.2, ease: 'easeInOut' }}
-                        className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-60 bg-white rounded-lg shadow-xl p-2 origin-top"
+                        className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 bg-white rounded-lg shadow-xl p-3 origin-top"
+                        onMouseLeave={() => {
+                          setProductDropdown(null);
+                          setOpenCategory(null);
+                        }}
                       >
-                        {productSubItems.map(subItem => (
-                          <button
-                            key={subItem.name}
-                            onClick={() => handleProductClick(subItem.path)}
-                            className="w-full text-left flex items-center space-x-3 px-4 py-2 rounded-md text-gray-700 hover:bg-light-bg hover:text-primary-blue"
+                        {productCategories.map(category => (
+                          <div
+                            key={category.name}
+                            className="relative mb-2 last:mb-0"
                           >
-                            <subItem.icon className="h-5 w-5" />
-                            <span>{subItem.name}</span>
-                          </button>
+                            <div
+                              className="px-3 py-2 text-gray-800 font-semibold text-sm flex items-center space-x-2 hover:bg-gray-50 rounded-md cursor-pointer transition-colors"
+                              onClick={() => {
+                                setOpenCategory(openCategory === category.name ? null : category.name);
+                              }}
+                            >
+                              <category.icon className="h-4 w-4 text-primary-blue" />
+                              <span>{category.name}</span>
+                              <ChevronDown className={`h-3 w-3 ml-auto transition-transform ${openCategory === category.name ? 'rotate-180' : ''}`} />
+                            </div>
+                            <AnimatePresence>
+                              {openCategory === category.name && (
+                                <motion.div
+                                  initial={{ opacity: 0, height: 0 }}
+                                  animate={{ opacity: 1, height: 'auto' }}
+                                  exit={{ opacity: 0, height: 0 }}
+                                  transition={{ duration: 0.2 }}
+                                  className="ml-4 mt-1 space-y-1 overflow-hidden"
+                                >
+                                  {category.subItems.map(subItem => (
+                                    <button
+                                      key={subItem.name}
+                                      onClick={() => {
+                                        handleProductClick(subItem.path);
+                                        setOpenCategory(null);
+                                      }}
+                                      className="w-full text-left flex items-center space-x-3 px-4 py-2 rounded-md text-gray-700 hover:bg-light-bg hover:text-primary-blue transition-colors"
+                                    >
+                                      <span className="w-2 h-2 bg-primary-blue rounded-full flex-shrink-0"></span>
+                                      <span>{subItem.name}</span>
+                                    </button>
+                                  ))}
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
+                          </div>
                         ))}
                       </motion.div>
                     )}
@@ -161,7 +232,11 @@ const Navbar = () => {
             ))}
           </motion.div>
 
-          <button className="md:hidden p-2 text-white" onClick={() => setIsOpen(!isOpen)}>
+          <button className="md:hidden p-2 text-white" onClick={() => {
+            setIsOpen(!isOpen);
+            setProductDropdown(false);
+            setOpenCategory(null);
+          }}>
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
@@ -206,6 +281,7 @@ const Navbar = () => {
                               setIsOpen(false);
                             } else {
                               setProductDropdown(!productDropdown);
+                              setOpenCategory(null);
                             }
                           }}
                         >
@@ -216,16 +292,40 @@ const Navbar = () => {
                           {item.dropdown && <ChevronDown className={`h-4 w-4 transition-transform ${productDropdown ? 'rotate-180' : ''}`} />}
                         </button>
                         {item.dropdown && productDropdown && (
-                          <div className="ml-8 mt-2 space-y-1">
-                            {productSubItems.map(subItem => (
-                              <button
-                                key={subItem.name}
-                                onClick={() => handleProductClick(subItem.path)}
-                                className="w-full text-left flex items-center space-x-3 py-2 px-4 text-gray-600 hover:text-primary-blue rounded-md"
-                              >
-                                <subItem.icon className="h-4 w-4" />
-                                <span>{subItem.name}</span>
-                              </button>
+                          <div className="ml-8 mt-2 space-y-2">
+                            {productCategories.map(category => (
+                              <div key={category.name} className="mb-3 last:mb-0">
+                                <div
+                                  className="px-4 py-2 text-gray-800 font-semibold text-sm flex items-center space-x-2 cursor-pointer"
+                                  onClick={() => setOpenCategory(openCategory === category.name ? null : category.name)}
+                                >
+                                  <category.icon className="h-4 w-4 text-primary-blue" />
+                                  <span>{category.name}</span>
+                                  <ChevronDown className={`h-3 w-3 ml-auto transition-transform ${openCategory === category.name ? 'rotate-180' : ''}`} />
+                                </div>
+                                <AnimatePresence>
+                                  {openCategory === category.name && (
+                                    <motion.div
+                                      initial={{ opacity: 0, height: 0 }}
+                                      animate={{ opacity: 1, height: 'auto' }}
+                                      exit={{ opacity: 0, height: 0 }}
+                                      transition={{ duration: 0.2 }}
+                                      className="ml-6 space-y-1 overflow-hidden"
+                                    >
+                                      {category.subItems.map(subItem => (
+                                        <button
+                                          key={subItem.name}
+                                          onClick={() => handleProductClick(subItem.path)}
+                                          className="w-full text-left flex items-center space-x-3 py-2 px-4 text-gray-600 hover:text-primary-blue rounded-md transition-colors"
+                                        >
+                                          <span className="w-2 h-2 bg-primary-blue rounded-full flex-shrink-0"></span>
+                                          <span>{subItem.name}</span>
+                                        </button>
+                                      ))}
+                                    </motion.div>
+                                  )}
+                                </AnimatePresence>
+                              </div>
                             ))}
                           </div>
                         )}

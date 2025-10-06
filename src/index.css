@@ -123,6 +123,86 @@ body {
   box-shadow: 0 20px 40px rgba(0, 122, 204, 0.1);
 }
 
+.hover-scale {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.hover-glow {
+  transition: box-shadow 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 15px rgba(30, 58, 138, 0.4);
+}
+
+.underline-slide {
+  position: relative;
+  overflow: hidden;
+}
+
+.underline-slide::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: var(--accent-green);
+  transition: left 0.3s ease;
+}
+
+.underline-slide:hover::after {
+  left: 0;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+@keyframes tilt3D {
+  0% { transform: perspective(1000px) rotateX(0deg) rotateY(0deg); }
+  50% { transform: perspective(1000px) rotateX(-5deg) rotateY(5deg); }
+  100% { transform: perspective(1000px) rotateX(0deg) rotateY(0deg); }
+}
+
+.hover-tilt-3d {
+  transition: transform 0.3s ease;
+}
+
+.hover-tilt-3d:hover {
+  transform: perspective(1000px) rotateX(-5deg) rotateY(5deg);
+}
+
+@keyframes pop3D {
+  0% { transform: scale(1) rotateY(0deg); }
+  50% { transform: scale(1.1) rotateY(10deg); }
+  100% { transform: scale(1) rotateY(0deg); }
+}
+
+.hover-pop-3d {
+  transition: transform 0.3s ease;
+}
+
+.hover-pop-3d:hover {
+  animation: pop3D 0.6s ease;
+}
+
 .whatsapp-float {
   position: fixed;
   bottom: 20px;

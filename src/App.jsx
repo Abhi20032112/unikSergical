@@ -47,7 +47,10 @@ function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products/medical-furniture" element={<Products />} />
+          <Route path="/products/non-medical-furniture" element={<Products />} />
           <Route path="/products/surgical-instruments" element={<Products />} />
+          <Route path="/products/diagnostic-instruments" element={<Products />} />
+          <Route path="/products/support-instruments" element={<Products />} />
           <Route path="/products/furniture/:id" element={<ProductDetail />} />
           <Route path="/products/instruments/:id" element={<ProductDetail />} />
           <Route path="/clients" element={<Clients />} />

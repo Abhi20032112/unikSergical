@@ -1,31 +1,15 @@
-# Hero Image Enhancement Tasks
+# 3D Animations for Navbar and Footer
 
-## Overview
-Enhance the hero slider with more colorful and animated effects, adding vibrant gradients, image animations, particle backgrounds, and enhanced text animations.
+## Navbar Enhancements
+- [x] Add 3D tilt (rotateY) on hover for nav items with medical pulse effect
+- [x] Enhance logo with 3D rotation mimicking medical equipment spin
+- [x] Add perspective transform and medical-themed depth shadow to nav container
 
-## Tasks
+## Footer Enhancements
+- [x] Add 3D rotations (rotateX, rotateY) to floating medical icons with DNA-like helix motion
+- [x] Add 3D flip effect (rotateY 180°) to social media icons on hover, like opening medical records
+- [x] Add perspective and transform-style preserve-3d to footer container with medical depth
 
-### 1. Update src/index.css
-- [x] Add new keyframes for enhanced colorful gradient animations (e.g., vibrant-color-shift)
-- [x] Add keyframes for image zoom/pan animation
-- [x] Add keyframes for floating particle animations with multiple colors
-- [x] Add glow and color cycling animations for text
-
-### 2. Update src/components/HeroSlider.jsx
-- [x] Replace the overlay gradient with a more vibrant, multi-color animated gradient
-- [x] Add subtle zoom and pan animation to the background images
-- [x] Add a particle background component with floating colored particles
-- [x] Enhance text animations with glow effects and additional color transitions
-- [x] Add decorative animated elements (e.g., floating icons or shapes)
-
-### 3. Testing and Adjustments
-- [ ] Test animations in browser for performance
-- [ ] Adjust animation timings and colors based on visual feedback
-- [ ] Ensure animations work on mobile devices
-
-## Completion Criteria
-- Hero images have vibrant, animated color overlays
-- Images have subtle zoom/pan animations
-- Particle background adds dynamic visual interest
-- Text has enhanced glow and color effects
-- Overall animation is smooth and not distracting
+## Testing
+- [ ] Test animations on different screen sizes
+- [ ] Ensure animations are smooth and not overwhelming

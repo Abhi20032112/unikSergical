@@ -210,10 +210,17 @@ const Home = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="card-hover bg-white rounded-xl shadow-lg overflow-hidden"
+                className="card-hover bg-white rounded-xl shadow-lg overflow-hidden hover-tilt-3d"
+                whileHover={{ scale: 1.05 }}
               >
                 <div className="overflow-hidden h-48">
-                  <img className="w-full h-full object-cover hover:scale-110 transition-transform duration-300" alt={product.name} src={product.image} />
+                  <motion.img
+                    className="w-full h-full object-cover hover-pop-3d"
+                    alt={product.name}
+                    src={product.image}
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.3 }}
+                  />
                 </div>
                 <div className="p-6">
                   <div className="text-sm text-primary-blue font-medium mb-2">{product.category}</div>
