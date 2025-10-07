@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
-import { Target, Eye, Heart, Award, Building } from 'lucide-react';
+import { Target, Eye, Heart, Award, Building } from '@/components/Icons';
 
 const About = () => {
   const timeline = [
@@ -45,8 +45,8 @@ const About = () => {
     >
       <Helmet>
         <title>About Unik Surgical Pvt. Ltd. - 25+ Years Healthcare Infrastructure Excellence</title>
-        <meta name="description" content="Learn about Unik Surgical's 25+ year journey in healthcare infrastructure. Founded in 2000 in Patna, Bihar. ISO 9001:2015 certified with 500+ completed projects. Meet our leadership team and discover our mission, vision, and values." />
-        <meta name="keywords" content="about unik surgical, healthcare infrastructure company, Patna Bihar, 25 years experience, ISO certified, medical gas systems, operation theatres, company history" />
+        <meta name="description" content="Learn about Unik Surgical's 25+ year journey in healthcare infrastructure. Offices in Patna, Bihar, Greater Noida, Uttar Pradesh, and factory in Chapra, Bihar. Founded in 2000. ISO 9001:2015 certified with 500+ completed projects. Meet our leadership team and discover our mission, vision, and values." />
+        <meta name="keywords" content="about unik surgical, healthcare infrastructure company, Patna Bihar, Greater Noida, Chapra, 25 years experience, ISO certified, medical gas systems, operation theatres, company history" />
         <meta property="og:title" content="About Unik Surgical Pvt. Ltd. - Healthcare Infrastructure Excellence" />
         <meta property="og:description" content="25+ years of excellence in healthcare infrastructure development. Meet our leadership team and discover our mission, vision, and values." />
       </Helmet>

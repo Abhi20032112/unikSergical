@@ -9,11 +9,12 @@ import Home from '@/pages/Home';
 import About from '@/pages/About';
 import Services from '@/pages/Services';
 import Products from '@/pages/Products';
+import ProductImages from '@/pages/ProductImages';
 import ProductDetail from '@/pages/ProductDetail';
 import Clients from '@/pages/Clients';
 import Contact from '@/pages/Contact';
 import Certifications from '@/pages/Certifications';
-import Team from '@/pages/Team';
+
 import WhatsAppFloat from '@/components/WhatsAppFloat';
 import { AnimatePresence } from 'framer-motion';
 
@@ -28,8 +29,8 @@ function App() {
     <div className="min-h-screen bg-light-bg pt-20">
       <Helmet>
         <title>Unik Surgical Pvt. Ltd. - Leading Healthcare Infrastructure Solutions in Eastern India</title>
-        <meta name="description" content="Unik Surgical Pvt. Ltd. - Premier healthcare infrastructure company in Patna, Bihar. 25+ years experience in Medical Gas Pipeline Systems, Modular Operation Theatres, Medical Furniture, and Surgical Instruments. ISO 9001:2015 certified with 500+ completed projects." />
-        <meta name="keywords" content="medical gas pipeline systems, modular operation theatres, medical furniture, surgical instruments, healthcare infrastructure, hospital equipment, Patna Bihar, Eastern India" />
+        <meta name="description" content="Unik Surgical Pvt. Ltd. - Premier healthcare infrastructure company with offices in Patna, Bihar, Greater Noida, Uttar Pradesh, and factory in Chapra, Bihar. 25+ years experience in Medical Gas Pipeline Systems, Modular Operation Theatres, Medical Furniture, and Surgical Instruments. ISO 9001:2015 certified with 500+ completed projects." />
+        <meta name="keywords" content="medical gas pipeline systems, modular operation theatres, medical furniture, surgical instruments, healthcare infrastructure, hospital equipment, Patna Bihar, Greater Noida, Chapra, Eastern India" />
         <meta name="author" content="Unik Surgical Pvt. Ltd." />
         <meta property="og:title" content="Unik Surgical Pvt. Ltd. - Healthcare Infrastructure Solutions" />
         <meta property="og:description" content="Leading healthcare infrastructure company providing comprehensive solutions for hospitals and medical facilities across Eastern India." />
@@ -47,6 +48,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/products" element={<Products />} />
+          <Route path="/product-images" element={<ProductImages />} />
           <Route path="/products/medical-furniture" element={<Products />} />
           <Route path="/products/non-medical-furniture" element={<Products />} />
           <Route path="/products/surgical-instruments" element={<Products />} />
@@ -55,7 +57,6 @@ function App() {
           <Route path="/products/furniture/:id" element={<ProductDetail />} />
           <Route path="/products/instruments/:id" element={<ProductDetail />} />
           <Route path="/clients" element={<Clients />} />
-          <Route path="/team" element={<Team />} />
           <Route path="/certifications" element={<Certifications />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>

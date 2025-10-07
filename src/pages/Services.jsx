@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
-import { Wrench, Building, Utensils, Bed, Scissors, Settings, Check, MessageSquare, PenTool, Cog, Headphones } from 'lucide-react';
+import { Tool, Building, Utensils, Bed, Scissors, Settings, Check, MessageSquare, PenTool, Cog, Headphones } from '@/components/Icons';
 import { Button } from '@/ui/button';
 import { toast } from '@/ui/use-toast';
 import { Link } from 'react-router-dom';
@@ -9,11 +9,11 @@ import { Link } from 'react-router-dom';
 const Services = () => {
   const services = [
     {
-      icon: Wrench,
+      icon: Tool,
       title: 'Medical Gas Pipeline Systems',
       description: 'Complete medical gas infrastructure including oxygen, nitrous oxide, medical air, and vacuum systems with centralized monitoring and alarm systems.',
       features: ['Centralized gas supply manifold', 'Zone valve boxes with alarms', 'Pipeline testing & certification', 'Emergency shut-off systems', 'Pressure monitoring', 'Compliance with IS 13450'],
-      image: 'Medical gas pipeline system with central manifold and distribution network',
+      image: '/processed_images/processed_TROLLEY FOR OXYGEN CYLINDER.png',
       applications: ['Hospitals', 'Clinics', 'Operation Theatres', 'ICUs', 'Emergency Departments'],
       benefits: ['Reliable gas supply', 'Safety compliance', 'Cost-effective operation', 'Easy maintenance']
     },
@@ -22,7 +22,7 @@ const Services = () => {
       title: 'Modular Operation Theatres',
       description: 'State-of-the-art modular OT solutions with laminar air flow, integrated lighting, and advanced surgical equipment for optimal surgical environments.',
       features: ['Laminar air flow systems', 'Integrated LED lighting', 'Climate control systems', 'Modular wall systems', 'Surgical equipment integration', 'Fire safety systems'],
-      image: 'Modern modular operation theatre with advanced surgical equipment and lighting',
+      image: '/processed_images/processed_C-ARM COMPATIBLE HYDRAULIC OPERATING TABLE.png',
       applications: ['General Surgery', 'Cardiac Surgery', 'Orthopedic Surgery', 'Neurosurgery', 'Minimally Invasive Surgery'],
       benefits: ['Infection control', 'Optimal lighting', 'Flexible design', 'Easy maintenance']
     },
@@ -31,7 +31,7 @@ const Services = () => {
       title: 'Laundry & Kitchen Equipment',
       description: 'Commercial-grade laundry and kitchen equipment designed for healthcare facilities with strict hygiene standards and energy efficiency.',
       features: ['Industrial washing machines', 'Steam sterilizers', 'Commercial dishwashers', 'Food service equipment', 'Hygiene monitoring systems', 'Energy-efficient design'],
-      image: 'Commercial hospital kitchen with stainless steel equipment and modern appliances',
+      image: '/processed_images/processed_COOKER TYPE AUTOCLAVE (PORTABLE) SINGLE,DOUBLE DRUM ALUMINIUM.png',
       applications: ['Hospital Kitchens', 'Laundry Services', 'Food Service Areas', 'Sterilization Units'],
       benefits: ['Hygiene compliance', 'Energy efficiency', 'Durable construction', 'Easy operation']
     },
@@ -40,7 +40,7 @@ const Services = () => {
       title: 'Medical & Non-Medical Furniture',
       description: 'Ergonomic and durable furniture solutions including patient beds, examination tables, and administrative furniture designed for healthcare environments.',
       features: ['Patient beds & stretchers', 'Examination tables', 'Medical cabinets', 'Administrative furniture', 'Seating solutions', 'Storage systems'],
-      image: 'Modern hospital furniture including patient beds and medical examination equipment',
+      image: '/processed_images/processed_HOSPITAL BED PLAIN (GENERAL).png',
       applications: ['Patient Rooms', 'Examination Areas', 'Administrative Offices', 'Waiting Areas', 'Treatment Rooms'],
       benefits: ['Patient comfort', 'Staff efficiency', 'Durable design', 'Easy maintenance']
     },
@@ -49,7 +49,7 @@ const Services = () => {
       title: 'Hospital Curtains & Track Systems',
       description: 'Privacy curtains and track systems designed for healthcare environments with antimicrobial properties and easy maintenance.',
       features: ['Antimicrobial fabric curtains', 'Smooth track systems', 'Privacy solutions', 'Easy maintenance', 'Fire retardant materials', 'Custom sizing'],
-      image: 'Hospital privacy curtains and track systems in patient care areas',
+      image: '/processed_images/processed_BED SLIDE SCREEN (4 PANELS).png',
       applications: ['Patient Rooms', 'Examination Areas', 'Emergency Departments', 'Recovery Rooms'],
       benefits: ['Infection control', 'Patient privacy', 'Easy cleaning', 'Durable materials']
     },
@@ -58,7 +58,7 @@ const Services = () => {
       title: 'Building Management Systems',
       description: 'Integrated BMS solutions for monitoring and controlling HVAC, lighting, security, and other building systems for optimal facility management.',
       features: ['HVAC control systems', 'Lighting management', 'Security integration', 'Energy monitoring', 'Fire safety systems', 'Maintenance scheduling'],
-      image: 'Building management system control room with monitoring screens and equipment',
+      image: '/processed_images/processed_MONITOR TROLLEY.png',
       applications: ['Hospital Buildings', 'Medical Centers', 'Administrative Buildings', 'Support Facilities'],
       benefits: ['Energy efficiency', 'Centralized control', 'Cost savings', 'Improved safety']
     },
@@ -109,7 +109,7 @@ const Services = () => {
             className="text-center mb-16"
           >
             <h2 className="font-poppins text-4xl font-bold text-gray-800 mb-4 flex items-center justify-center">
-              <Wrench className="mr-4 h-10 w-10 text-primary-blue" />
+              <Tool className="mr-4 h-10 w-10 text-primary-blue" />
               Complete Healthcare Solutions
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -184,7 +184,7 @@ const Services = () => {
                   </div>
                   
                   <div className="relative overflow-hidden">
-                    <img class="w-full h-full object-cover hover:scale-110 transition-transform duration-300" alt={service.title} src="https://images.unsplash.com/photo-1595872018818-97555653a011" />
+                    <img className="w-full h-full object-cover hover:scale-110 transition-transform duration-300" alt={service.title} src={service.image} />
                   </div>
                 </div>
               </motion.div>

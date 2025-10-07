@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
-import { Award, Shield, CheckCircle, FileText } from 'lucide-react';
+import { Award, Shield, CheckCircle, FileText } from '@/components/Icons';
 
 const Certifications = () => {
   const certifications = [

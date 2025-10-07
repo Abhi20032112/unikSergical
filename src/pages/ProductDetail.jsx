@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Button } from '@/ui/button';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft } from '@/components/Icons';
 
 const images = [
   'Screenshot_3-10-2025_155410_.jpeg',

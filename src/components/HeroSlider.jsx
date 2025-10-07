@@ -6,7 +6,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 import { motion } from 'framer-motion';
-import { ArrowRight, Stethoscope, HeartPulse, PlusSquare } from 'lucide-react';
+import { ArrowRight } from '@/components/Icons';
 import { Button } from '@/ui/button';
 import { toast } from '@/ui/use-toast';
 
@@ -68,52 +68,12 @@ const HeroSlider = () => {
     return <Particle key={i} className={colorClass} style={style} />;
   });
 
-  // Floating 3D objects replaced with icons
-  const floatingObjects = [
-    { icon: Stethoscope, size: 'w-8 h-8', color: 'text-accent-green/40', delay: 0 },
-    { icon: HeartPulse, size: 'w-10 h-10', color: 'text-primary-blue/40', delay: 2 },
-    { icon: PlusSquare, size: 'w-8 h-8', color: 'text-accent-gold/40', delay: 4 },
-  ];
-
   return (
-    <section className="relative h-screen w-full overflow-hidden pt-16 animate-gradient-x" style={{ backgroundImage: 'linear-gradient(45deg, #1e3a8a, #06b6d4, #f59e0b)' }}>
+    <section className="relative h-screen w-full overflow-hidden">
       {/* Particle background */}
       <div className="particle-bg">
         {particles}
       </div>
-
-      {/* Floating 3D icons */}
-      {floatingObjects.map((obj, index) => (
-        <motion.div
-          key={index}
-          className={`absolute ${obj.color}`}
-          style={{
-            top: `${20 + index * 20}%`,
-            left: `${10 + index * 30}%`,
-          }}
-          animate={{
-            y: [0, -20, 0],
-            rotateY: [0, 180, 360],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 8 + index * 2,
-            repeat: Infinity,
-            ease: 'easeInOut',
-            delay: obj.delay,
-          }}
-        >
-          <obj.icon className={`${obj.size} drop-shadow-lg`} />
-        </motion.div>
-      ))}
-
-      {/* Parallax background elements */}
-      <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-primary-blue/10 to-accent-green/10"
-        style={{ y: 0 }}
-        animate={{ y: [-10, 10, -10] }}
-        transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
-      />
       <Swiper
         modules={[Navigation, Pagination, Autoplay, EffectFade]}
         spaceBetween={0}

@@ -6,44 +6,6 @@ import { Button } from '@/ui/button';
 import { Link } from 'react-router-dom';
 import HeroSlider from '@/components/HeroSlider';
 
-const images = [
-  'Screenshot_3-10-2025_155410_.jpeg',
-  'Screenshot_3-10-2025_155417_.jpeg',
-  'Screenshot_3-10-2025_155424_.jpeg',
-  'Screenshot_3-10-2025_155431_.jpeg',
-  'Screenshot_3-10-2025_155440_.jpeg',
-  'Screenshot_3-10-2025_155448_.jpeg',
-  'Screenshot_3-10-2025_155458_.jpeg',
-  'Screenshot_3-10-2025_155522_.jpeg',
-  'Screenshot_3-10-2025_155530_.jpeg',
-  'Screenshot_3-10-2025_155536_.jpeg',
-  'Screenshot_3-10-2025_155558_.jpeg',
-  'Screenshot_3-10-2025_155646_.jpeg',
-  'Screenshot_3-10-2025_155652_.jpeg',
-  'Screenshot_3-10-2025_155659_.jpeg',
-  'Screenshot_3-10-2025_155714_.jpeg',
-  'Screenshot_3-10-2025_155724_.jpeg',
-  'Screenshot_3-10-2025_155729_.jpeg',
-  'Screenshot_3-10-2025_155738_.jpeg',
-  'Screenshot_3-10-2025_155745_.jpeg',
-  'Screenshot_3-10-2025_155754_.jpeg',
-  'Screenshot_3-10-2025_15577_.jpeg',
-  'Screenshot_3-10-2025_15580_.jpeg',
-  'Screenshot_3-10-2025_155920_.jpeg',
-  'Screenshot_3-10-2025_155930_.jpeg',
-  'Screenshot_3-10-2025_155941_.jpeg',
-  'Screenshot_3-10-2025_155948_.jpeg',
-  'Screenshot_3-10-2025_16021_.jpeg',
-  'Screenshot_3-10-2025_16039_.jpeg',
-  'Screenshot_3-10-2025_16044_.jpeg',
-  'Screenshot_3-10-2025_16049_.jpeg',
-  'Screenshot_3-10-2025_16111_.jpeg',
-  'Screenshot_3-10-2025_16122_.jpeg',
-  'Screenshot_3-10-2025_16128_.jpeg',
-  'Screenshot_3-10-2025_16139_.jpeg',
-  'Screenshot_3-10-2025_1614_.jpeg'
-];
-
 const Home = () => {
   const stats = [
     { number: '25+', label: 'Years Experience', icon: Clock },
@@ -97,8 +59,8 @@ const Home = () => {
     <motion.div initial="hidden" animate="visible" exit={{ opacity: 0 }} variants={containerVariants}>
       <Helmet>
         <title>Unik Surgical Pvt. Ltd. - Premier Healthcare Infrastructure Solutions | Patna, Bihar</title>
-        <meta name="description" content="Transform healthcare facilities with Unik Surgical's comprehensive infrastructure solutions. 25+ years experience in Medical Gas Pipeline Systems, Modular Operation Theatres, Medical Furniture & Surgical Instruments. ISO 9001:2015 certified with 500+ completed projects across Eastern India." />
-        <meta name="keywords" content="healthcare infrastructure, medical gas pipeline, modular operation theatre, medical furniture, surgical instruments, hospital equipment, Patna Bihar, Eastern India, ISO certified" />
+        <meta name="description" content="Transform healthcare facilities with Unik Surgical's comprehensive infrastructure solutions. Offices in Patna, Bihar, Greater Noida, Uttar Pradesh, and factory in Chapra, Bihar. 25+ years experience in Medical Gas Pipeline Systems, Modular Operation Theatres, Medical Furniture & Surgical Instruments. ISO 9001:2015 certified with 500+ completed projects across Eastern India." />
+        <meta name="keywords" content="healthcare infrastructure, medical gas pipeline, modular operation theatre, medical furniture, surgical instruments, hospital equipment, Patna Bihar, Greater Noida, Chapra, Eastern India, ISO certified" />
         <meta property="og:title" content="Unik Surgical Pvt. Ltd. - Premier Healthcare Infrastructure Solutions" />
         <meta property="og:description" content="Leading healthcare infrastructure company with 25+ years experience. Medical Gas Pipeline Systems, Modular OTs, Medical Furniture & Surgical Instruments." />
       </Helmet>
@@ -246,6 +208,17 @@ const Home = () => {
                 </div>
               </motion.div>
             ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link to="/product-images">
+              <Button
+                variant="outline"
+                className="border-primary-blue text-primary-blue hover:bg-primary-blue hover:text-white"
+              >
+                View All Product Images
+              </Button>
+            </Link>
           </div>
         </div>
       </section>

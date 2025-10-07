@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MessageCircle } from '@/components/Icons';
+import { FaWhatsapp } from '@/components/Icons';
 import { toast } from '@/ui/use-toast';
 
 const WhatsAppFloat = () => {
@@ -18,7 +18,7 @@ const WhatsAppFloat = () => {
       whileTap={{ scale: 0.9 }}
       onClick={handleWhatsAppClick}
     >
-      <MessageCircle className="h-6 w-6" />
+      <FaWhatsapp className="h-6 w-6" />
     </motion.button>
   );
 };

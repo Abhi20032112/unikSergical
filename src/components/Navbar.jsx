@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Home, Info, Wrench, Box, Users, Mail, ChevronDown, Bed, Scissors, Phone, Menu, X } from '@/components/Icons';
+import { Home, Info, Tool, Box, Users, Mail, ChevronDown, Bed, Scissors, Phone, Menu, X } from '@/components/Icons';
 import { useToast } from '@/ui/use-toast';
 import HamburgerIcon from './HamburgerIcon';
 
@@ -23,7 +23,7 @@ const Navbar = () => {
   const navItems = [
     { name: 'Home', path: '/', icon: Home },
     { name: 'About', path: '/about', icon: Info },
-    { name: 'Services', path: '/services', icon: Wrench },
+    { name: 'Services', path: '/services', icon: Tool },
     { name: 'Products', path: '/products', icon: Box, dropdown: true },
     { name: 'Clients', path: '/clients', icon: Users },
     { name: 'Contact', path: '/contact', icon: Mail },
@@ -75,15 +75,17 @@ const Navbar = () => {
       transition: { duration: 0.5, ease: 'easeOut' }
     },
     hover: {
-      y: -5,
-      scale: [1, 1.1, 1],
-      rotateY: 15,
+      y: -8,
+      scale: 1.15,
+      rotateY: 10,
+      rotateX: 5,
       color: "var(--accent-green)",
-      textShadow: "0 0 15px rgba(6, 182, 212, 0.8), 0 5px 10px rgba(0,0,0,0.3)",
-      boxShadow: "0 10px 20px rgba(0,0,0,0.2)",
+      textShadow: "0 0 20px rgba(6, 182, 212, 1), 0 0 40px rgba(6, 182, 212, 0.5), 0 10px 20px rgba(0,0,0,0.4)",
+      boxShadow: "0 15px 30px rgba(0,0,0,0.3), 0 0 30px rgba(6, 182, 212, 0.4)",
       transition: {
-        duration: 0.3,
-        scale: { repeat: Infinity, duration: 1.5, ease: "easeInOut" }
+        type: "spring",
+        stiffness: 300,
+        damping: 10
       }
     },
     tap: { scale: 0.95 }
@@ -121,8 +123,8 @@ const Navbar = () => {
             <Link to="/" className="flex items-center space-x-2">
               <img src="/unikSergical logo.png" alt="Unik Surgical Logo" className="h-12 w-12 transition-all duration-300 rounded-full bg-white p-1" />
               <div className="font-poppins">
-                <div className="text-xl font-bold text-white">Unik Surgical</div>
-                <div className="text-xs text-white/80">Healthcare Infrastructure</div>
+                <div className="text-xl font-bold text-white">UNIK SURGICAL PVT LTD</div>
+                <div className="text-xs text-white/80">Passionately powering healthcare excellence with precision & care</div>
               </div>
             </Link>
           </motion.div>
@@ -140,8 +142,10 @@ const Navbar = () => {
                 initial="hidden"
                 animate="visible"
                 variants={navItemVariants}
-                whileHover="hover"
+                whileHover={item.name === 'Products' ? null : (productDropdown ? null : "hover")}
                 whileTap="tap"
+                onMouseEnter={() => { if (item.dropdown && window.innerWidth >= 1024) setProductDropdown(item.name); }}
+                onMouseLeave={() => { if (window.innerWidth >= 1024) setProductDropdown(null); }}
               >
                 <div
                   className={`flex items-center space-x-2 font-medium transition-colors p-2 rounded-lg cursor-pointer ${
@@ -177,11 +181,8 @@ const Navbar = () => {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 20 }}
                         transition={{ duration: 0.2, ease: 'easeInOut' }}
-                        className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 bg-white rounded-lg shadow-xl p-3 origin-top"
-                        onMouseLeave={() => {
-                          setProductDropdown(null);
-                          setOpenCategory(null);
-                        }}
+                        className="relative w-full bg-transparent p-0 rounded-none shadow-none text-white lg:absolute lg:top-full lg:left-1/2 lg:-translate-x-1/2 lg:mt-2 lg:w-72 lg:bg-white lg:rounded-lg lg:shadow-xl lg:p-3 lg:origin-top lg:z-50 lg:text-gray-800"
+                        onMouseLeave={() => { if (window.innerWidth >= 1024) { setProductDropdown(null); setOpenCategory(null); } }}
                       >
                         {productCategories.map(category => (
                           <div
@@ -189,7 +190,7 @@ const Navbar = () => {
                             className="relative mb-2 last:mb-0"
                           >
                             <div
-                              className="px-3 py-2 text-gray-800 font-semibold text-sm flex items-center space-x-2 hover:bg-gray-50 rounded-md cursor-pointer transition-colors"
+                              className="px-3 py-2 text-white font-semibold text-sm flex items-center space-x-2 hover:bg-white/10 rounded-md cursor-pointer transition-colors lg:text-gray-800 lg:hover:bg-gray-50"
                               onClick={() => {
                                 setOpenCategory(openCategory === category.name ? null : category.name);
                               }}
@@ -214,9 +215,9 @@ const Navbar = () => {
                                         handleProductClick(subItem.path);
                                         setOpenCategory(null);
                                       }}
-                                      className="w-full text-left flex items-center space-x-3 px-4 py-2 rounded-md text-gray-700 hover:bg-light-bg hover:text-primary-blue transition-colors"
+                                      className="w-full text-left flex items-center space-x-3 px-4 py-2 rounded-md text-white hover:bg-white/10 transition-colors lg:text-gray-700 lg:hover:bg-primary-blue lg:hover:text-white"
                                     >
-                                      <span className="w-2 h-2 bg-primary-blue rounded-full flex-shrink-0"></span>
+                                      <span className="w-2 h-2 bg-white rounded-full flex-shrink-0 lg:bg-primary-blue"></span>
                                       <span>{subItem.name}</span>
                                     </button>
                                   ))}
@@ -270,7 +271,7 @@ const Navbar = () => {
                     initial="hidden"
                     animate="visible"
                     variants={navItemVariants}
-                    whileHover="hover"
+                    whileHover={item.name === 'Products' ? null : (productDropdown ? null : "hover")}
                     whileTap="tap"
                   >
                     <div
@@ -308,11 +309,8 @@ const Navbar = () => {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: 20 }}
                             transition={{ duration: 0.2, ease: 'easeInOut' }}
-                            className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 bg-white rounded-lg shadow-xl p-3 origin-top z-50 text-gray-800"
-                            onMouseLeave={() => {
-                              setProductDropdown(null);
-                              setOpenCategory(null);
-                            }}
+                            className="relative w-full bg-transparent p-0 rounded-none shadow-none text-white lg:absolute lg:top-full lg:left-1/2 lg:-translate-x-1/2 lg:mt-2 lg:w-72 lg:bg-white lg:rounded-lg lg:shadow-xl lg:p-3 lg:origin-top lg:z-50 lg:text-gray-800"
+                            onMouseLeave={() => { if (window.innerWidth >= 1024) { setProductDropdown(null); setOpenCategory(null); } }}
                           >
                             {productCategories.map(category => (
                               <div
@@ -320,7 +318,7 @@ const Navbar = () => {
                                 className="relative mb-2 last:mb-0"
                               >
                                 <div
-                                  className="px-3 py-2 text-gray-800 font-semibold text-sm flex items-center space-x-2 hover:bg-gray-50 rounded-md cursor-pointer transition-colors"
+                                  className="px-3 py-2 text-white font-semibold text-sm flex items-center space-x-2 hover:bg-white/10 rounded-md cursor-pointer transition-colors lg:text-gray-800 lg:hover:bg-gray-50"
                                   onClick={() => {
                                     setOpenCategory(openCategory === category.name ? null : category.name);
                                   }}
@@ -347,9 +345,9 @@ const Navbar = () => {
                                             setIsOpen(false);
                                             setProductDropdown(null);
                                           }}
-                                          className="w-full text-left flex items-center space-x-3 px-4 py-2 rounded-md text-gray-700 hover:bg-primary-blue hover:text-white transition-colors"
+                                          className="w-full text-left flex items-center space-x-3 px-4 py-2 rounded-md text-white hover:bg-white/10 transition-colors lg:text-gray-700 lg:hover:bg-primary-blue lg:hover:text-white"
                                         >
-                                          <span className="w-2 h-2 bg-primary-blue rounded-full flex-shrink-0"></span>
+                                          <span className="w-2 h-2 bg-white rounded-full flex-shrink-0 lg:bg-primary-blue"></span>
                                           <span>{subItem.name}</span>
                                         </button>
                                       ))}

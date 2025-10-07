@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
-import { MapPin, Phone, Mail, Clock, Send } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Send } from '@/components/Icons';
 import { Button } from '@/ui/button';
 import { toast } from '@/ui/use-toast';
 
@@ -22,7 +22,9 @@ const Contact = () => {
   };
 
   const contactInfo = [
-    { icon: MapPin, title: 'Our Location', details: ['Unik Surgical Pvt. Ltd.', 'Near Patna Medical College', 'Patna, Bihar, India', 'PIN: 800001'] },
+    { icon: MapPin, title: 'Corporate Office', details: ['2C/159, G. D. Mishra Path', 'New Patliputra Colony', 'Patna - 800013, Bihar, India'] },
+    { icon: MapPin, title: 'Branch Office', details: ['H-230, BETA-II', 'Greater Noida, Uttar Pradesh, India'] },
+    { icon: MapPin, title: 'Factory', details: ['Ahilya Knowledge Park', 'Near Pani Tanki, Tekniwas', 'NH-85, Chapra - 841213, Bihar, India'] },
     { icon: Phone, title: 'Phone Numbers', details: ['+91 612 123 4567', '+91 98765 43210', 'Emergency: +91 98765 43211'] },
     { icon: Mail, title: 'Email Addresses', details: ['info@uniksurgical.com', 'sales@uniksurgical.com', 'support@uniksurgical.com'] },
     { icon: Clock, title: 'Business Hours', details: ['Mon - Fri: 9:00am - 6:00pm', 'Saturday: 9:00am - 2:00pm', 'Sunday: Closed (Emergency support available)'] },
@@ -42,8 +44,8 @@ const Contact = () => {
     >
       <Helmet>
         <title>Contact Unik Surgical Pvt. Ltd. - Healthcare Infrastructure Solutions | Patna, Bihar</title>
-        <meta name="description" content="Contact Unik Surgical for healthcare infrastructure solutions. Located in Patna, Bihar. Serving Eastern India with Medical Gas Pipeline Systems, Modular Operation Theatres, and Medical Furniture. Get free consultation and quotes." />
-        <meta name="keywords" content="contact unik surgical, healthcare infrastructure consultation, Patna Bihar, medical gas systems, operation theatres, hospital equipment, Eastern India" />
+        <meta name="description" content="Contact Unik Surgical for healthcare infrastructure solutions. Offices in Patna, Bihar, Greater Noida, Uttar Pradesh, and factory in Chapra, Bihar. Serving Eastern India with Medical Gas Pipeline Systems, Modular Operation Theatres, and Medical Furniture. Get free consultation and quotes." />
+        <meta name="keywords" content="contact unik surgical, healthcare infrastructure consultation, Patna Bihar, Greater Noida, Chapra, medical gas systems, operation theatres, hospital equipment, Eastern India" />
         <meta property="og:title" content="Contact Unik Surgical Pvt. Ltd. - Healthcare Infrastructure Solutions" />
         <meta property="og:description" content="Get in touch with Unik Surgical for healthcare infrastructure solutions. Contact our experts for consultations, quotes, and project discussions." />
       </Helmet>
@@ -66,7 +68,7 @@ const Contact = () => {
 
       <section className="py-20 bg-light-bg">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {contactInfo.map((info, index) => (
               <motion.div
                 key={index}

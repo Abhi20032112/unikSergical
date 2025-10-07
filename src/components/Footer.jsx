@@ -17,7 +17,7 @@ const Footer = () => {
     { name: 'About Us', path: '/about' },
     { name: 'Services', path: '/services' },
     { name: 'Products', path: '/products' },
-    { name: 'Team', path: '/team' },
+    { name: 'Clients', path: '/clients' },
     { name: 'Contact', path: '/contact' },
   ];
 
@@ -64,8 +64,8 @@ const Footer = () => {
             <Link to="/" className="flex items-center space-x-2">
               <img src="/unikSergical logo.png" alt="Unik Surgical Logo" className="h-10 w-10 bg-white p-1 rounded-full" />
               <div className="font-poppins">
-                <div className="text-xl font-bold">Unik Surgical</div>
-                <div className="text-sm opacity-80">Healthcare Infrastructure</div>
+                <div className="text-xl font-bold">UNIK SURGICAL PVT LTD</div>
+                <div className="text-sm opacity-80">Passionately powering healthcare excellence with precision & care</div>
               </div>
             </Link>
             <p className="text-sm opacity-90">
@@ -106,7 +106,11 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-start space-x-2">
                 <MapPin className="h-4 w-4 mt-1 flex-shrink-0" />
-                <span className="text-sm">Patna, Bihar, India</span>
+                <div className="text-sm">
+                  <div><strong>Corporate Office:</strong> 2C/159, G. D. Mishra Path, New Patliputra Colony, Patna - 800013, Bihar, India</div>
+                  <div><strong>Branch Office:</strong> H-230, BETA-II, Greater Noida, Uttar Pradesh, India</div>
+                  <div><strong>Factory:</strong> Ahilya Knowledge Park, Near Pani Tanki, Tekniwas, NH-85, Chapra - 841213, Bihar, India</div>
+                </div>
               </div>
               <div className="flex items-center space-x-2">
                 <Phone className="h-4 w-4" />
@@ -137,7 +141,7 @@ const Footer = () => {
 
         <div className="border-t border-white/20 mt-12 pt-8 text-center space-y-1">
           <p className="text-sm opacity-80">
-            © 2025 Unik Surgical Pvt. Ltd. All rights reserved.
+            © 2025 UNIK SURGICAL PVT LTD. All rights reserved.
           </p>
           <p className="text-xs opacity-70">
             Managed by <a href="https://ards.in" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#00F2A9]">Alpenrose digital solutions</a>

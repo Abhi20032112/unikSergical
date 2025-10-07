@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
-import { Users, Award, Building, MapPin } from 'lucide-react';
+import { Users, Award, Building, MapPin } from '@/components/Icons';
 import { toast } from '@/ui/use-toast';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
@@ -12,12 +12,39 @@ import 'swiper/css/pagination';
 const Clients = () => {
   const clients = [
     {
-      name: 'All India Institute of Medical Sciences (AIIMS)',
+      name: 'Maulana Mazharul Haque Arabic & Persian University',
+      location: 'Patna, Bihar',
+      type: 'Academic & Research Institution',
+      projects: ['Educational Infrastructure', 'Research Facilities'],
+      image: 'University campus with modern facilities',
+      logo: '/logos/Maulana Mazharul.jpg',
+      testimonial: 'Unik Surgical has supported our academic and research initiatives with quality infrastructure.'
+    },
+    {
+      name: 'Sainik School',
+      location: 'Gopalganj, Bihar',
+      type: 'Academic & Research Institution',
+      projects: ['Educational Facilities', 'Campus Infrastructure'],
+      image: 'Educational institution with modern amenities',
+      logo: '/logos/Sainik school Gopalganj.jpg',
+      testimonial: 'Reliable partners for our institutional development needs.'
+    },
+    {
+      name: 'Bihar Medical Service Infrastructure Corporation Limited (BMSICL)',
+      location: 'Patna, Bihar',
+      type: 'Healthcare Institution',
+      projects: ['Medical Infrastructure', 'Healthcare Facilities'],
+      image: 'Government healthcare corporation building',
+      logo: '/logos/Bihar medical infrastructure development.jpg',
+      testimonial: 'Outstanding service in healthcare infrastructure development.'
+    },
+    {
+      name: 'All India Institute Of Medical Sciences (AIIMS)',
       location: 'Patna, Bihar',
       type: 'Super Specialty Hospital',
       projects: ['Medical Gas Pipeline Systems', 'Modular Operation Theatres', 'Medical Furniture'],
       image: 'Hospital building with modern architecture',
-      logo: '/images/clients/aiims.png',
+      logo: '/logos/AIIMS Patna.png',
       testimonial: 'Unik Surgical has transformed our healthcare infrastructure with their expertise and quality.'
     },
     {
@@ -26,109 +53,107 @@ const Clients = () => {
       type: 'Super Specialty Hospital',
       projects: ['Medical Furniture', 'Surgical Instruments', 'Building Management Systems'],
       image: 'Modern hospital complex',
-      logo: '/images/clients/igims.png',
+      logo: '/logos/Indira_Gandhi_Institute_of_Medical_Sciences_Logo.svg.png',
       testimonial: 'Outstanding service and reliable solutions for our critical healthcare needs.'
     },
     {
       name: 'Nalanda Medical College',
       location: 'Patna, Bihar',
-      type: 'Government Hospital',
+      type: 'Medical College',
       projects: ['Medical Gas Pipeline System', 'Modular Operation Theatre', 'Surgical Equipment'],
       image: 'Educational medical institution',
-      logo: '/images/clients/nmch.png',
+      logo: '/logos/nmch-logo.png',
       testimonial: 'Excellent quality and timely delivery of healthcare solutions.'
     },
     {
-      name: 'Patna Medical College Hospital',
+      name: 'Nalanda Medical College & Hospital',
       location: 'Patna, Bihar',
-      type: 'Government Hospital',
-      projects: ['Medical Gas Pipeline System', 'Modular Operation Theatre'],
-      image: 'Hospital building with modern architecture',
-      logo: '/images/clients/patna-medical-college.jfif',
-      testimonial: 'Unik Surgical has transformed our healthcare infrastructure with their expertise and quality.'
+      type: 'Medical College & Hospital',
+      projects: ['Medical Infrastructure', 'Hospital Equipment'],
+      image: 'Medical college and hospital complex',
+      logo: '/logos/nmch-logo.png',
+      testimonial: 'Trusted for comprehensive healthcare and educational solutions.'
     },
     {
-      name: 'Ruban Memorial Hospital',
-      location: 'Patna, Bihar',
-      type: 'Private Hospital',
-      projects: ['Surgical Instruments', 'Laundry Equipment'],
-      image: 'Contemporary hospital facility',
-      logo: '/images/clients/ruban-memorial.png',
-      testimonial: 'Their commitment to excellence is evident in every project they undertake.'
+      name: 'Sri Krishna Medical College & Hospital',
+      location: 'Muzaffarpur, Bihar',
+      type: 'Medical College & Hospital',
+      projects: ['Medical Furniture', 'Surgical Equipment'],
+      image: 'Medical institution with modern facilities',
+      logo: '/logos/Sri krishna Medical college.jpeg',
+      testimonial: 'Reliable partners in healthcare infrastructure.'
     },
     {
-      name: 'Paras HMRI Hospital',
-      location: 'Patna, Bihar',
-      type: 'Multi-Specialty Hospital',
-      projects: ['Modular Operation Theatre', 'Medical Gas System'],
-      image: 'State-of-the-art medical facility',
-      logo: '/images/clients/paras-hmri.png',
-      testimonial: 'Professional team with cutting-edge technology solutions.'
+      name: 'Anugrah Narayan Magadh Medical College & Hospital',
+      location: 'Gaya, Bihar',
+      type: 'Medical College & Hospital',
+      projects: ['Hospital Infrastructure', 'Medical Equipment'],
+      image: 'Comprehensive medical facility',
+      logo: '/logos/Anugrah Medical College Gaya.png',
+      testimonial: 'Quality solutions for our medical college and hospital.'
+    },
+    {
+      name: 'Jawaharlal Nehru Medical College & Hospital',
+      location: 'Bhagalpur, Bihar',
+      type: 'Medical College & Hospital',
+      projects: ['Surgical Instruments', 'Medical Furniture'],
+      image: 'Educational and healthcare complex',
+      logo: '/logos/Jawahar Lal Neharu Medical college.png',
+      testimonial: 'Excellent service and infrastructure support.'
+    },
+    {
+      name: 'Jan Nayak Karpuri Thakur Medical College & Hospital',
+      location: 'Madhepura, Bihar',
+      type: 'Medical College & Hospital',
+      projects: ['Medical Gas Systems', 'Operation Theatres'],
+      image: 'Modern medical college facility',
+      logo: '/logos/Jannayak Karpurithakur medical college.png',
+      testimonial: 'Partners in advancing healthcare education and services.'
+    },
+    {
+      name: 'All District Hospitals in Bihar',
+      location: 'Various Districts, Bihar',
+      type: 'District Hospitals',
+      projects: ['Medical Furniture', 'Hospital Equipment', 'Infrastructure Development'],
+      image: 'District hospital network across Bihar',
+      logo: '/logos/All District hospital GoB.png',
+      testimonial: 'Comprehensive support for district-level healthcare infrastructure statewide.'
     },
     {
       name: 'Ford Hospital',
       location: 'Patna, Bihar',
-      type: 'Private Hospital',
-      projects: ['Medical Furniture', 'Hospital Curtains'],
-      image: 'Modern healthcare center',
-      logo: '/images/clients/ford-hospital.png',
-      testimonial: 'Reliable partners for all our infrastructure requirements.'
+      type: 'Hospital',
+      projects: ['Medical Equipment'],
+      image: 'Modern hospital facility',
+      logo: '/logos/Ford Hospital.png',
+      testimonial: 'Reliable partners in healthcare solutions.'
     },
     {
-      name: 'Magadh Medical College Hospital',
-      location: 'Gaya, Bihar',
-      type: 'Government Hospital',
-      projects: ['Medical Gas Pipeline', 'Surgical Equipment'],
-      image: 'Educational medical institution',
-      testimonial: 'Excellent quality and timely delivery of healthcare solutions.'
-    },
-    {
-      name: 'Rajendra Institute of Medical Sciences',
-      location: 'Ranchi, Jharkhand',
-      type: 'Government Hospital',
-      projects: ['Modular OT', 'Medical Furniture'],
-      image: 'Comprehensive medical institute',
-      testimonial: 'Trusted for their expertise in healthcare infrastructure.'
-    },
-    {
-      name: 'Medanta Hospital',
-      location: 'Ranchi, Jharkhand',
-      type: 'Private Hospital',
-      projects: ['Building Management System', 'Medical Gas System'],
+      name: 'Paras HMRI Hospital',
+      location: 'Patna, Bihar',
+      type: 'Hospital',
+      projects: ['Healthcare Facilities'],
       image: 'Advanced medical center',
-      testimonial: 'Innovative solutions that enhance patient care.'
+      logo: '/logos/Paras HMRI Hospital.png',
+      testimonial: 'Quality healthcare solutions.'
     },
     {
-      name: 'Apollo Hospitals',
-      location: 'Kolkata, West Bengal',
-      type: 'Multi-Specialty Hospital',
-      projects: ['Complete Infrastructure Setup', 'Surgical Instruments'],
-      image: 'Leading healthcare provider',
-      testimonial: 'Comprehensive healthcare solutions delivered with precision.'
+      name: 'Patna Medical College & Hospital',
+      location: 'Patna, Bihar',
+      type: 'Medical College & Hospital',
+      projects: ['Medical Infrastructure'],
+      image: 'Educational and healthcare institution',
+      logo: '/logos/patna_medical_college_logo.jfif',
+      testimonial: 'Trusted for medical education and healthcare.'
     },
     {
-      name: 'AMRI Hospitals',
-      location: 'Kolkata, West Bengal',
-      type: 'Super Specialty Hospital',
-      projects: ['Modular Operation Theatre', 'Medical Furniture'],
-      image: 'Modern medical facility',
-      testimonial: 'Partners in building world-class healthcare environments.'
-    },
-    {
-      name: 'Tata Main Hospital',
-      location: 'Jamshedpur, Jharkhand',
-      type: 'Industrial Hospital',
-      projects: ['Medical Gas Pipeline', 'Laundry Equipment'],
-      image: 'Industrial healthcare facility',
-      testimonial: 'Reliable and efficient healthcare infrastructure solutions.'
-    },
-    {
-      name: 'Ispat General Hospital',
-      location: 'Rourkela, Odisha',
-      type: 'Industrial Hospital',
-      projects: ['Medical Furniture', 'Surgical Equipment'],
-      image: 'Steel industry medical center',
-      testimonial: 'Quality healthcare solutions for industrial settings.'
+      name: 'Ruban Memorial Hospital',
+      location: 'Patna, Bihar',
+      type: 'Hospital',
+      projects: ['Hospital Equipment'],
+      image: 'Specialized hospital services',
+      logo: '/logos/Ruban Memorial Hospital.png',
+      testimonial: 'Reliable partners in healthcare.'
     },
   ];
 
