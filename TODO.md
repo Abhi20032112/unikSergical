@@ -1,2 +1,3 @@
-- [x] Enhance hover animation in Navbar.jsx for more attractive effects
-- [x] Remove hover animations when product dropdown is open
+- [x] Modify src/pages/Products.jsx: Change "View Details" button onClick to open the relevant PDF catalog using window.open()
+- [x] Modify src/pages/Contact.jsx: Integrate EmailJS for sending emails with attachments
+- [ ] Test the changes by running the development server and verifying PDF opens on "View Details" click and form submits to Formspree

@@ -8,6 +8,7 @@ import 'swiper/css/effect-fade';
 import { motion } from 'framer-motion';
 import { ArrowRight } from '@/components/Icons';
 import { Button } from '@/ui/button';
+import { Link } from 'react-router-dom';
 import { toast } from '@/ui/use-toast';
 
 const sliderImages = [
@@ -46,10 +47,6 @@ const Particle = ({ className, style }) => {
 };
 
 const HeroSlider = () => {
-  const handleCTAClick = () => {
-    window.location.href = '/services';
-  };
-
   // Generate random particles with different colors and positions
   const particles = Array.from({ length: 20 }).map((_, i) => {
     const colors = ['particle-red', 'particle-blue', 'particle-green', 'particle-yellow', 'particle-purple'];
@@ -115,10 +112,16 @@ const HeroSlider = () => {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5, delay: 0.9 }}
                   >
-                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                      <Button size="lg" className="bg-accent-gold text-black hover:bg-yellow-400 glow-effect" onClick={handleCTAClick}>
-                        Discover Our Solutions <ArrowRight className="ml-2 h-5 w-5" />
-                      </Button>
+                    <motion.div
+                      whileHover={{ scale: 1.1, rotate: 2 }}
+                      whileTap={{ scale: 0.95 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    >
+                      <Link to="/services">
+                        <Button size="lg" className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 text-black hover:from-yellow-500 hover:via-orange-600 hover:to-red-600 glow-effect shadow-lg hover:shadow-xl transition-all duration-300">
+                          Discover Our Solutions <ArrowRight className="ml-2 h-5 w-5" />
+                        </Button>
+                      </Link>
                     </motion.div>
                   </motion.div>
                 </div>

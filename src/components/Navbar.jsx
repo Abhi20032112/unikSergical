@@ -121,7 +121,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           <motion.div whileHover="hover" variants={logoVariants}>
             <Link to="/" className="flex items-center space-x-2">
-              <img src="/unikSergical logo.png" alt="Unik Surgical Logo" className="h-12 w-12 transition-all duration-300 rounded-full bg-white p-1" />
+              <img src="/unikSergical logo.png" alt="Unik Surgical Logo" className="h-12 w-12 transition-all duration-300 rounded-full p-1 bg-white" />
               <div className="font-poppins">
                 <div className="text-xl font-bold text-white">UNIK SURGICAL PVT LTD</div>
                 <div className="text-xs text-white/80">Passionately powering healthcare excellence with precision & care</div>

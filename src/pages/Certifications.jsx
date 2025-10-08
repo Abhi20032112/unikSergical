@@ -125,7 +125,7 @@ const Certifications = () => {
               >
                 <div className="p-6">
                   <div className="flex items-center mb-4">
-                    <div className={`p-3 rounded-full bg-gray-100 mr-4 ${cert.color}`}>
+                    <div className={`p-3 rounded-full mr-4 ${cert.color}`}>
                       <cert.icon className="h-8 w-8" />
                     </div>
                     <div>

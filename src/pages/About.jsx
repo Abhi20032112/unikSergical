@@ -99,7 +99,7 @@ const About = () => {
               transition={{ duration: 0.6 }}
               className="relative"
             >
-              <img class="w-full rounded-lg shadow-lg" alt="Unik Surgical company building and facilities" src="https://images.unsplash.com/photo-1659444568616-1dc6277d2111" />
+              <img class="w-full rounded-lg shadow-lg" alt="Our journey since 2000" src="/images/our-journey.jpeg" />
             </motion.div>
           </div>
         </div>

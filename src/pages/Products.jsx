@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
-import { Download, Box, ChevronDown } from '@/components/Icons';
+import { Download, Box, ChevronDown, Bed, Scissors, Cog, PenTool, Building } from '@/components/Icons';
 import { Button } from '@/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/ui/tabs';
 import { toast } from '@/ui/use-toast';
@@ -56,68 +56,68 @@ const Products = () => {
 
   const furnitureCatalog = {
     medical: [
-      "ICU Bed (Manual & Motorized)",
-      "Semi-Fowler Bed",
-      "Fowler Bed",
-      "Examination Couch",
-      "Bedside Locker (Standard & Deluxe)",
-      "Overbed Table",
-      "Attendant Bed",
-      "Patient Trolley (Stretcher Type)",
-      "Emergency Recovery Trolley",
-      "Wheelchair (Standard & Foldable)",
-      "Commode Chair",
-      "Revolving Stool (SS & MS)",
-      "IV Stand (SS & MS)",
-      "Instrument Trolley (2 & 3 Shelves)",
-      "Mayo's Trolley",
-      "Dressing Trolley",
-      "Medicine Trolley",
-      "Crash Cart"
+      { name: "ICU Bed (Manual & Motorized)", icon: Bed, description: "Advanced ICU beds with manual and motorized adjustments for optimal patient comfort and caregiver efficiency." },
+      { name: "Semi-Fowler Bed", icon: Bed, description: "Semi-fowler beds designed for patient recovery with adjustable backrest for comfortable positioning." },
+      { name: "Fowler Bed", icon: Bed, description: "Fowler beds with full backrest adjustment, ideal for patients requiring elevated positioning." },
+      { name: "Examination Couch", icon: Bed, description: "Ergonomic examination couches with adjustable height and durable upholstery for medical examinations." },
+      { name: "Bedside Locker (Standard & Deluxe)", icon: Box, description: "Bedside lockers in standard and deluxe variants with storage compartments and smooth finish." },
+      { name: "Overbed Table", icon: Box, description: "Adjustable overbed tables for patient meals, reading, and medical procedures." },
+      { name: "Attendant Bed", icon: Bed, description: "Comfortable attendant beds for caregivers, designed for hospital environments." },
+      { name: "Patient Trolley (Stretcher Type)", icon: Box, description: "Stretcher-type patient trolleys with smooth wheels and safety features for patient transport." },
+      { name: "Emergency Recovery Trolley", icon: Box, description: "Hydraulic emergency recovery trolleys for critical patient handling and procedures." },
+      { name: "Wheelchair (Standard & Foldable)", icon: Box, description: "Standard and foldable wheelchairs with ergonomic design and easy maneuverability." },
+      { name: "Commode Chair", icon: Box, description: "Commode chairs for patient hygiene and comfort in medical facilities." },
+      { name: "Revolving Stool (SS & MS)", icon: Box, description: "Revolving stools in stainless steel and mild steel for medical professionals." },
+      { name: "IV Stand (SS & MS)", icon: Box, description: "IV stands in stainless steel and mild steel with adjustable height and stability." },
+      { name: "Instrument Trolley (2 & 3 Shelves)", icon: Box, description: "Instrument trolleys with 2 or 3 shelves for organized storage and transport of medical instruments." },
+      { name: "Mayo's Trolley", icon: Box, description: "Mayo's trolleys designed for surgical instrument organization during operations." },
+      { name: "Dressing Trolley", icon: Box, description: "Dressing trolleys with compartments for wound care supplies and medications." },
+      { name: "Medicine Trolley", icon: Box, description: "Medicine trolleys with secure storage for pharmaceuticals and medical supplies." },
+      { name: "Crash Cart", icon: Box, description: "Emergency crash carts equipped with life-saving equipment and medications." }
     ],
     nonMedical: [
-      "Office Table (Various Sizes)",
-      "Executive Chair",
-      "Visitor Chair",
-      "File Cabinet",
-      "Storage Rack",
-      "Wardrobe (Single & Double Door)",
-      "Shoe Rack",
-      "Dining Table Set",
-      "Waiting Area Sofa (3-Seater & 5-Seater)"
+      { name: "Office Table (Various Sizes)", icon: Building, description: "Professional office tables in various sizes for administrative and office workspaces." },
+      { name: "Executive Chair", icon: Building, description: "Comfortable executive chairs with ergonomic design for long working hours." },
+      { name: "Visitor Chair", icon: Building, description: "Elegant visitor chairs for waiting areas and meeting rooms." },
+      { name: "File Cabinet", icon: Building, description: "Secure file cabinets for organized document storage in offices." },
+      { name: "Storage Rack", icon: Building, description: "Industrial storage racks for efficient inventory management." },
+      { name: "Wardrobe (Single & Double Door)", icon: Building, description: "Wardrobes with single and double doors for personal storage in facilities." },
+      { name: "Shoe Rack", icon: Building, description: "Organized shoe racks for entry areas and changing rooms." },
+      { name: "Dining Table Set", icon: Building, description: "Dining table sets for cafeteria and break areas in institutions." },
+      { name: "Waiting Area Sofa (3-Seater & 5-Seater)", icon: Building, description: "Comfortable sofas for waiting areas in hospitals and offices." }
     ]
   };
 
   const instrumentCatalogue = {
     surgical: [
-      "Minor Surgery Set",
-      "Major Surgery Set",
-      "ENT Set",
-      "Gynecology Set",
-      "Orthopedic Set",
-      "General Instrument Set",
-      "Dressing Set",
-      "Suture Set",
-      "Delivery Set",
-      "Laparoscopy Instruments (Basic)"
+      { name: "Minor Surgery Set", icon: Scissors, description: "Comprehensive minor surgery instrument sets for basic surgical procedures." },
+      { name: "Major Surgery Set", icon: Scissors, description: "Complete major surgery instrument sets for complex surgical operations." },
+      { name: "ENT Set", icon: Scissors, description: "Specialized ENT instrument sets for ear, nose, and throat procedures." },
+      { name: "Gynecology Set", icon: Scissors, description: "Gynecology instrument sets for obstetric and gynecological examinations." },
+      { name: "Orthopedic Set", icon: Scissors, description: "Orthopedic instrument sets for bone and joint surgical procedures." },
+      { name: "General Instrument Set", icon: Scissors, description: "General purpose surgical instrument sets for various medical procedures." },
+      { name: "Dressing Set", icon: Scissors, description: "Dressing instrument sets for wound care and dressing changes." },
+      { name: "Suture Set", icon: Scissors, description: "Suture instrument sets for wound closure and stitching." },
+      { name: "Delivery Set", icon: Scissors, description: "Delivery instrument sets for obstetric procedures and childbirth." },
+      { name: "Laparoscopy Instruments (Basic)", icon: Scissors, description: "Basic laparoscopy instrument sets for minimally invasive surgeries." }
     ],
     diagnostic: [
-      "Stethoscope",
-      "BP Apparatus (Mercury & Digital)",
-      "Thermometer (Digital & Infrared)",
-      "Otoscope",
-      "Ophthalmoscope",
-      "Reflex Hammer",
-      "Tuning Fork"
+      { name: "Stethoscope", icon: PenTool, description: "High-quality stethoscopes for accurate heart and lung auscultation." },
+      { name: "BP Apparatus (Mercury & Digital)", icon: PenTool, description: "Blood pressure apparatus in mercury and digital variants for hypertension monitoring." },
+      { name: "Thermometer (Digital & Infrared)", icon: PenTool, description: "Digital and infrared thermometers for precise body temperature measurement." },
+      { name: "Otoscope", icon: PenTool, description: "Otoscope for ear examination and diagnosis of ear conditions." },
+      { name: "Ophthalmoscope", icon: PenTool, description: "Ophthalmoscope for eye examination and retinal assessment." },
+      { name: "Reflex Hammer", icon: PenTool, description: "Reflex hammers for neurological examination and reflex testing." },
+      { name: "Tuning Fork", icon: PenTool, description: "Tuning forks for hearing tests and vibration sense assessment." }
     ],
     support: [
-      "Suction Machine (Manual & Electric)",
-      "Nebulizer",
-      "Oxygen Flowmeter",
-      "Humidifier Bottle",
-      "Ambu Bag (Adult & Pediatric)",
-      "Laryngoscope Set",
-      "Torch Light (Pen Type)"
+      { name: "Suction Machine (Manual & Electric)", icon: Cog, description: "Manual and electric suction machines for airway clearance and secretion removal." },
+      { name: "Nebulizer", icon: Cog, description: "Nebulizers for converting liquid medication into mist for respiratory treatment." },
+      { name: "Oxygen Flowmeter", icon: Cog, description: "Oxygen flowmeters for regulating oxygen flow in medical gas systems." },
+      { name: "Humidifier Bottle", icon: Cog, description: "Humidifier bottles for adding moisture to oxygen therapy systems." },
+      { name: "Ambu Bag (Adult & Pediatric)", icon: Cog, description: "Ambu bags for manual ventilation in adult and pediatric patients." },
+      { name: "Laryngoscope Set", icon: Cog, description: "Laryngoscope sets for airway management and intubation procedures." },
+      { name: "Torch Light (Pen Type)", icon: Cog, description: "Pen-type torch lights for medical examinations and procedures." }
     ]
   };
 
@@ -231,10 +231,22 @@ const Products = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, amount: 0.3 }}
                             transition={{ duration: 0.4, delay: index * 0.1 }}
-                            className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg hover:scale-105 transition-shadow transform-gpu"
+                            className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg hover:scale-105 transition-all transform-gpu group border-t-4 border-blue-500"
                           >
-                            <h4 className="font-semibold text-gray-800 mb-2">{item}</h4>
-                            <p className="text-sm text-gray-600">High-quality medical furniture designed for healthcare facilities.</p>
+                            <div className="flex items-center mb-4">
+                              <div className="inline-flex items-center justify-center w-10 h-10 bg-blue-100 text-blue-600 rounded-lg mr-3">
+                                <item.icon className="h-5 w-5" />
+                              </div>
+                              <h4 className="font-semibold text-gray-800">{item.name}</h4>
+                            </div>
+                            <p className="text-sm text-gray-600 mb-4">{item.description}</p>
+                            <Button
+                              size="sm"
+                              className="w-full bg-blue-600 hover:bg-blue-700"
+                              onClick={() => window.open('product and details/FURNITURE CATALOG AMENDED.pdf', '_blank')}
+                            >
+                              View Details
+                            </Button>
                           </motion.div>
                         ))}
                       </div>
@@ -254,10 +266,22 @@ const Products = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, amount: 0.3 }}
                             transition={{ duration: 0.4, delay: index * 0.1 }}
-                            className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg hover:scale-105 transition-shadow transform-gpu"
+                            className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg hover:scale-105 transition-all transform-gpu group border-t-4 border-gray-500"
                           >
-                            <h4 className="font-semibold text-gray-800 mb-2">{item}</h4>
-                            <p className="text-sm text-gray-600">Professional office and facility furniture solutions.</p>
+                            <div className="flex items-center mb-4">
+                              <div className="inline-flex items-center justify-center w-10 h-10 bg-gray-100 text-gray-600 rounded-lg mr-3">
+                                <item.icon className="h-5 w-5" />
+                              </div>
+                              <h4 className="font-semibold text-gray-800">{item.name}</h4>
+                            </div>
+                            <p className="text-sm text-gray-600 mb-4">{item.description}</p>
+                            <Button
+                              size="sm"
+                              className="w-full bg-gray-600 hover:bg-gray-700"
+                              onClick={() => window.open('product and details/FURNITURE CATALOG AMENDED.pdf', '_blank')}
+                            >
+                              View Details
+                            </Button>
                           </motion.div>
                         ))}
                       </div>
@@ -283,10 +307,22 @@ const Products = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, amount: 0.3 }}
                             transition={{ duration: 0.4, delay: index * 0.1 }}
-                            className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg hover:scale-105 transition-shadow transform-gpu"
+                            className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg hover:scale-105 transition-all transform-gpu group border-t-4 border-red-500"
                           >
-                            <h4 className="font-semibold text-gray-800 mb-2">{item}</h4>
-                            <p className="text-sm text-gray-600">Precision surgical instruments for medical procedures.</p>
+                            <div className="flex items-center mb-4">
+                              <div className="inline-flex items-center justify-center w-10 h-10 bg-red-100 text-red-600 rounded-lg mr-3">
+                                <item.icon className="h-5 w-5" />
+                              </div>
+                              <h4 className="font-semibold text-gray-800">{item.name}</h4>
+                            </div>
+                            <p className="text-sm text-gray-600 mb-4">{item.description}</p>
+                            <Button
+                              size="sm"
+                              className="w-full bg-red-600 hover:bg-red-700"
+                              onClick={() => window.open('product and details/INSTRUMENT CATALOGUE AMENDED.pdf', '_blank')}
+                            >
+                              View Details
+                            </Button>
                           </motion.div>
                         ))}
                       </div>
@@ -306,10 +342,22 @@ const Products = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, amount: 0.3 }}
                             transition={{ duration: 0.4, delay: index * 0.1 }}
-                            className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg hover:scale-105 transition-shadow transform-gpu"
+                            className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg hover:scale-105 transition-all transform-gpu group border-t-4 border-green-500"
                           >
-                            <h4 className="font-semibold text-gray-800 mb-2">{item}</h4>
-                            <p className="text-sm text-gray-600">Essential diagnostic tools for accurate medical assessment.</p>
+                            <div className="flex items-center mb-4">
+                              <div className="inline-flex items-center justify-center w-10 h-10 bg-green-100 text-green-600 rounded-lg mr-3">
+                                <item.icon className="h-5 w-5" />
+                              </div>
+                              <h4 className="font-semibold text-gray-800">{item.name}</h4>
+                            </div>
+                            <p className="text-sm text-gray-600 mb-4">{item.description}</p>
+                            <Button
+                              size="sm"
+                              className="w-full bg-green-600 hover:bg-green-700"
+                              onClick={() => window.open('product and details/INSTRUMENT CATALOGUE AMENDED.pdf', '_blank')}
+                            >
+                              View Details
+                            </Button>
                           </motion.div>
                         ))}
                       </div>
@@ -329,10 +377,22 @@ const Products = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, amount: 0.3 }}
                             transition={{ duration: 0.4, delay: index * 0.1 }}
-                            className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg hover:scale-105 transition-shadow transform-gpu"
+                            className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg hover:scale-105 transition-all transform-gpu group border-t-4 border-purple-500"
                           >
-                            <h4 className="font-semibold text-gray-800 mb-2">{item}</h4>
-                            <p className="text-sm text-gray-600">Support equipment for patient care and medical procedures.</p>
+                            <div className="flex items-center mb-4">
+                              <div className="inline-flex items-center justify-center w-10 h-10 bg-purple-100 text-purple-600 rounded-lg mr-3">
+                                <item.icon className="h-5 w-5" />
+                              </div>
+                              <h4 className="font-semibold text-gray-800">{item.name}</h4>
+                            </div>
+                            <p className="text-sm text-gray-600 mb-4">{item.description}</p>
+                            <Button
+                              size="sm"
+                              className="w-full bg-purple-600 hover:bg-purple-700"
+                              onClick={() => window.open('product and details/INSTRUMENT CATALOGUE AMENDED.pdf', '_blank')}
+                            >
+                              View Details
+                            </Button>
                           </motion.div>
                         ))}
                       </div>

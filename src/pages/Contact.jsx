@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
-import { MapPin, Phone, Mail, Clock, Send } from '@/components/Icons';
+import { Building, Tool, Phone, Mail, Clock, Send, MapPin } from '@/components/Icons';
 import { Button } from '@/ui/button';
 import { toast } from '@/ui/use-toast';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', company: '', service: '', message: '', attachment: null });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleInputChange = (e) => {
     if (e.target.name === 'attachment') {
@@ -16,17 +18,26 @@ const Contact = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Form submission logic can be added here if needed
+    setIsSubmitting(true);
+    try {
+      await emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', e.target, 'YOUR_PUBLIC_KEY');
+      toast({ title: "Message Sent", description: "Your message has been sent successfully!" });
+      setFormData({ name: '', email: '', phone: '', company: '', service: '', message: '', attachment: null });
+    } catch (error) {
+      toast({ title: "Error", description: "Failed to send message. Please try again." });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
-    { icon: MapPin, title: 'Corporate Office', details: ['2C/159, G. D. Mishra Path', 'New Patliputra Colony', 'Patna - 800013, Bihar, India'] },
-    { icon: MapPin, title: 'Branch Office', details: ['H-230, BETA-II', 'Greater Noida, Uttar Pradesh, India'] },
-    { icon: MapPin, title: 'Factory', details: ['Ahilya Knowledge Park', 'Near Pani Tanki, Tekniwas', 'NH-85, Chapra - 841213, Bihar, India'] },
+    { icon: Building, title: 'Corporate Office', details: ['2C/159, G. D. Mishra Path', 'New Patliputra Colony', 'Patna - 800013, Bihar, India'] },
+    { icon: Building, title: 'Branch Office', details: ['H-230, BETA-II', 'Greater Noida, Uttar Pradesh, India'] },
+    { icon: Tool, title: 'Factory', details: ['Ahilya Knowledge Park', 'Near Pani Tanki, Tekniwas', 'NH-85, Chapra - 841213, Bihar, India'] },
     { icon: Phone, title: 'Phone Numbers', details: ['+91 612 123 4567', '+91 98765 43210', 'Emergency: +91 98765 43211'] },
-    { icon: Mail, title: 'Email Addresses', details: ['info@uniksurgical.com', 'sales@uniksurgical.com', 'support@uniksurgical.com'] },
+    { icon: Mail, title: 'Email Addresses', details: ['uniksurgicalpvtltd@gmail.com'] },
     { icon: Clock, title: 'Business Hours', details: ['Mon - Fri: 9:00am - 6:00pm', 'Saturday: 9:00am - 2:00pm', 'Sunday: Closed (Emergency support available)'] },
   ];
 
@@ -134,9 +145,9 @@ const Contact = () => {
                   />
                 </div>
 
-                <Button type="submit" size="lg" className="w-full bg-primary-blue hover:bg-blue-700">
+                <Button type="submit" size="lg" className="w-full bg-primary-blue hover:bg-blue-700" disabled={isSubmitting}>
                   <Send className="mr-2 h-5 w-5" />
-                  Send Message
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </Button>
               </form>
             </motion.div>
@@ -198,9 +209,12 @@ const Contact = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="card-hover bg-white rounded-xl p-6 shadow-lg"
               >
-                <h3 className="font-poppins text-xl font-bold text-primary-blue mb-4">
-                  {area.state}
-                </h3>
+                <div className="flex items-center mb-4">
+                  <MapPin className="h-6 w-6 text-primary-blue mr-3" />
+                  <h3 className="font-poppins text-xl font-bold text-primary-blue">
+                    {area.state}
+                  </h3>
+                </div>
                 <div className="mb-4">
                   <h4 className="font-semibold text-gray-800 mb-2">Major Cities:</h4>
                   <div className="flex flex-wrap gap-2">

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
-import { Tool, Building, Utensils, Bed, Scissors, Settings, Check, MessageSquare, PenTool, Cog, Headphones } from '@/components/Icons';
+import { Tool, Building, Utensils, Bed, Scissors, Settings, Check, MessageSquare, PenTool, Cog, Headphones, FaComments, FaPencilAlt, FaCog, FaHeadphones } from '@/components/Icons';
 import { Button } from '@/ui/button';
 import { toast } from '@/ui/use-toast';
 import { Link } from 'react-router-dom';
@@ -13,7 +13,6 @@ const Services = () => {
       title: 'Medical Gas Pipeline Systems',
       description: 'Complete medical gas infrastructure including oxygen, nitrous oxide, medical air, and vacuum systems with centralized monitoring and alarm systems.',
       features: ['Centralized gas supply manifold', 'Zone valve boxes with alarms', 'Pipeline testing & certification', 'Emergency shut-off systems', 'Pressure monitoring', 'Compliance with IS 13450'],
-      image: '/processed_images/processed_TROLLEY FOR OXYGEN CYLINDER.png',
       applications: ['Hospitals', 'Clinics', 'Operation Theatres', 'ICUs', 'Emergency Departments'],
       benefits: ['Reliable gas supply', 'Safety compliance', 'Cost-effective operation', 'Easy maintenance']
     },
@@ -22,7 +21,6 @@ const Services = () => {
       title: 'Modular Operation Theatres',
       description: 'State-of-the-art modular OT solutions with laminar air flow, integrated lighting, and advanced surgical equipment for optimal surgical environments.',
       features: ['Laminar air flow systems', 'Integrated LED lighting', 'Climate control systems', 'Modular wall systems', 'Surgical equipment integration', 'Fire safety systems'],
-      image: '/processed_images/processed_C-ARM COMPATIBLE HYDRAULIC OPERATING TABLE.png',
       applications: ['General Surgery', 'Cardiac Surgery', 'Orthopedic Surgery', 'Neurosurgery', 'Minimally Invasive Surgery'],
       benefits: ['Infection control', 'Optimal lighting', 'Flexible design', 'Easy maintenance']
     },
@@ -31,7 +29,6 @@ const Services = () => {
       title: 'Laundry & Kitchen Equipment',
       description: 'Commercial-grade laundry and kitchen equipment designed for healthcare facilities with strict hygiene standards and energy efficiency.',
       features: ['Industrial washing machines', 'Steam sterilizers', 'Commercial dishwashers', 'Food service equipment', 'Hygiene monitoring systems', 'Energy-efficient design'],
-      image: '/processed_images/processed_COOKER TYPE AUTOCLAVE (PORTABLE) SINGLE,DOUBLE DRUM ALUMINIUM.png',
       applications: ['Hospital Kitchens', 'Laundry Services', 'Food Service Areas', 'Sterilization Units'],
       benefits: ['Hygiene compliance', 'Energy efficiency', 'Durable construction', 'Easy operation']
     },
@@ -40,7 +37,6 @@ const Services = () => {
       title: 'Medical & Non-Medical Furniture',
       description: 'Ergonomic and durable furniture solutions including patient beds, examination tables, and administrative furniture designed for healthcare environments.',
       features: ['Patient beds & stretchers', 'Examination tables', 'Medical cabinets', 'Administrative furniture', 'Seating solutions', 'Storage systems'],
-      image: '/processed_images/processed_HOSPITAL BED PLAIN (GENERAL).png',
       applications: ['Patient Rooms', 'Examination Areas', 'Administrative Offices', 'Waiting Areas', 'Treatment Rooms'],
       benefits: ['Patient comfort', 'Staff efficiency', 'Durable design', 'Easy maintenance']
     },
@@ -49,7 +45,6 @@ const Services = () => {
       title: 'Hospital Curtains & Track Systems',
       description: 'Privacy curtains and track systems designed for healthcare environments with antimicrobial properties and easy maintenance.',
       features: ['Antimicrobial fabric curtains', 'Smooth track systems', 'Privacy solutions', 'Easy maintenance', 'Fire retardant materials', 'Custom sizing'],
-      image: '/processed_images/processed_BED SLIDE SCREEN (4 PANELS).png',
       applications: ['Patient Rooms', 'Examination Areas', 'Emergency Departments', 'Recovery Rooms'],
       benefits: ['Infection control', 'Patient privacy', 'Easy cleaning', 'Durable materials']
     },
@@ -58,7 +53,6 @@ const Services = () => {
       title: 'Building Management Systems',
       description: 'Integrated BMS solutions for monitoring and controlling HVAC, lighting, security, and other building systems for optimal facility management.',
       features: ['HVAC control systems', 'Lighting management', 'Security integration', 'Energy monitoring', 'Fire safety systems', 'Maintenance scheduling'],
-      image: '/processed_images/processed_MONITOR TROLLEY.png',
       applications: ['Hospital Buildings', 'Medical Centers', 'Administrative Buildings', 'Support Facilities'],
       benefits: ['Energy efficiency', 'Centralized control', 'Cost savings', 'Improved safety']
     },
@@ -126,10 +120,9 @@ const Services = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="card-hover bg-white rounded-xl shadow-lg overflow-hidden"
+                className="card-hover bg-white rounded-xl shadow-lg"
               >
-                <div className="grid grid-cols-1 md:grid-cols-2">
-                  <div className="p-8 flex flex-col">
+                <div className="p-8 flex flex-col">
                     <div className="flex items-center mb-4">
                       <div className="inline-flex items-center justify-center w-12 h-12 bg-primary-blue text-white rounded-lg mr-4 shadow-md">
                         <service.icon className="h-6 w-6" />
@@ -175,18 +168,13 @@ const Services = () => {
                       </div>
                     )}
 
-                    <Button 
+                    <Button
                       className="w-full bg-primary-blue hover:bg-blue-700 mt-auto"
                       onClick={handleLearnMore}
                     >
                       Learn More
                     </Button>
                   </div>
-                  
-                  <div className="relative overflow-hidden">
-                    <img className="w-full h-full object-cover hover:scale-110 transition-transform duration-300" alt={service.title} src={service.image} />
-                  </div>
-                </div>
               </motion.div>
             ))}
           </div>
@@ -212,10 +200,10 @@ const Services = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {[
-              { icon: MessageSquare, title: 'Consultation', description: 'Understanding your specific requirements' },
-              { icon: PenTool, title: 'Design', description: 'Creating customized solutions with detailed planning' },
-              { icon: Cog, title: 'Implementation', description: 'Professional installation with quality assurance' },
-              { icon: Headphones, title: 'Support', description: 'Ongoing maintenance and technical support' },
+              { icon: FaComments, title: 'Consultation', description: 'Understanding your specific requirements' },
+              { icon: FaPencilAlt, title: 'Design', description: 'Creating customized solutions with detailed planning' },
+              { icon: FaCog, title: 'Implementation', description: 'Professional installation with quality assurance' },
+              { icon: FaHeadphones, title: 'Support', description: 'Ongoing maintenance and technical support' },
             ].map((process, index) => (
               <motion.div
                 key={index}
@@ -228,7 +216,7 @@ const Services = () => {
                 <div className="relative inline-block">
                   <div className="w-20 h-20 bg-light-bg rounded-full flex items-center justify-center mb-4">
                     <div className="w-16 h-16 bg-primary-blue text-white rounded-full flex items-center justify-center shadow-lg">
-                      <process.icon className="h-6 w-6" />
+                      <process.icon className="h-6 w-6 text-white" />
                     </div>
                   </div>
                 </div>

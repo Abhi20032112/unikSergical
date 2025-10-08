@@ -62,7 +62,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="space-y-4">
             <Link to="/" className="flex items-center space-x-2">
-              <img src="/unikSergical logo.png" alt="Unik Surgical Logo" className="h-10 w-10 bg-white p-1 rounded-full" />
+              <img src="/unikSergical logo.png" alt="Unik Surgical Logo" className="h-10 w-10 p-1 rounded-full bg-white" />
               <div className="font-poppins">
                 <div className="text-xl font-bold">UNIK SURGICAL PVT LTD</div>
                 <div className="text-sm opacity-80">Passionately powering healthcare excellence with precision & care</div>
@@ -118,7 +118,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="h-4 w-4" />
-                <span className="text-sm">info@uniksurgical.com</span>
+                <span className="text-sm">uniksurgicalpvtltd@gmail.com</span>
               </div>
             </div>
 
