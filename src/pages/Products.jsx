@@ -123,8 +123,8 @@ const Products = () => {
 
   const handleDownloadCatalog = (type = 'furniture') => {
     const catalogFiles = {
-      furniture: 'product and details/FURNITURE CATALOG AMENDED.pdf',
-      instruments: 'product and details/INSTRUMENT CATALOGUE AMENDED.pdf'
+      furniture: '/product and details/FURNITURE CATALOG AMENDED.pdf',
+      instruments: '/product and details/INSTRUMENT CATALOGUE AMENDED.pdf'
     };
 
     const fileName = catalogFiles[type] || catalogFiles.furniture;
@@ -146,19 +146,19 @@ const Products = () => {
 
 
   const documentList = [
-    { name: 'Furniture Catalog', file: 'product and details/FURNITURE CATALOG AMENDED.pdf' },
-    { name: 'Instrument Catalogue', file: 'product and details/INSTRUMENT CATALOGUE AMENDED.pdf' },
-    { name: 'Company Brochure', file: 'product and details/Unik-Surgical-Pioneering-Medical-Equipment-and-Furniture-Solutions (1).pdf' },
-    { name: 'ISO 13485 Certificate', file: 'product and details/IAF ISO 13485 2024.pdf' },
-    { name: 'Manufacturing License', file: 'product and details/IN54426A UNIK SURGICAL PRIVAT...pdf' },
-    { name: 'NSIC Certificate', file: 'product and details/nsic unik.pdf' },
-    { name: 'CEO Profile', file: 'product and details/Prince CEO USPL.pdf' },
-    { name: 'Certificate CL 8251', file: 'product and details/CL_8251.pdf' },
-    { name: 'Form MD42 8251', file: 'product and details/Form_MD42_ 8251.pdf' },
-    { name: 'Certificate 240716.USQD12', file: 'product and details/240716.USQD12.pdf' },
-    { name: 'Cover Letter', file: 'product and details/uploadCoverLetter.pdf' },
-    { name: 'Permission Document', file: 'product and details/uploadpermission.compressed.pdf' },
-    { name: 'Product List Document', file: 'product and details/New Microsoft Word Document (3) (1).docx' },
+    { name: 'Furniture Catalog', file: '/product and details/FURNITURE CATALOG AMENDED.pdf' },
+    { name: 'Instrument Catalogue', file: '/product and details/INSTRUMENT CATALOGUE AMENDED.pdf' },
+    { name: 'Company Brochure', file: '/product and details/Unik-Surgical-Pioneering-Medical-Equipment-and-Furniture-Solutions (1).pdf' },
+    { name: 'ISO 13485 Certificate', file: '/product and details/IAF ISO 13485 2024.pdf' },
+    { name: 'Manufacturing License', file: '/product and details/IN54426A UNIK SURGICAL PRIVAT...pdf' },
+    { name: 'NSIC Certificate', file: '/product and details/nsic unik.pdf' },
+    { name: 'CEO Profile', file: '/product and details/Prince CEO USPL.pdf' },
+    { name: 'Certificate CL 8251', file: '/product and details/CL_8251.pdf' },
+    { name: 'Form MD42 8251', file: '/product and details/Form_MD42_ 8251.pdf' },
+    { name: 'Certificate 240716.USQD12', file: '/product and details/240716.USQD12.pdf' },
+    { name: 'Cover Letter', file: '/product and details/uploadCoverLetter.pdf' },
+    { name: 'Permission Document', file: '/product and details/uploadpermission.compressed.pdf' },
+    { name: 'Product List Document', file: '/product and details/New Microsoft Word Document (3) (1).docx' },
   ];
 
   const handleDownloadDocument = (filePath, fileName) => {
@@ -243,7 +243,7 @@ const Products = () => {
                             <Button
                               size="sm"
                               className="w-full bg-blue-600 hover:bg-blue-700"
-                              onClick={() => window.open('product and details/FURNITURE CATALOG AMENDED.pdf', '_blank')}
+                              onClick={() => window.open('/product and details/FURNITURE CATALOG AMENDED.pdf', '_blank')}
                             >
                               View Details
                             </Button>
@@ -278,7 +278,7 @@ const Products = () => {
                             <Button
                               size="sm"
                               className="w-full bg-gray-600 hover:bg-gray-700"
-                              onClick={() => window.open('product and details/FURNITURE CATALOG AMENDED.pdf', '_blank')}
+                              onClick={() => window.open('/product and details/FURNITURE CATALOG AMENDED.pdf', '_blank')}
                             >
                               View Details
                             </Button>
@@ -319,7 +319,7 @@ const Products = () => {
                             <Button
                               size="sm"
                               className="w-full bg-red-600 hover:bg-red-700"
-                              onClick={() => window.open('product and details/INSTRUMENT CATALOGUE AMENDED.pdf', '_blank')}
+                              onClick={() => window.open('/product and details/INSTRUMENT CATALOGUE AMENDED.pdf', '_blank')}
                             >
                               View Details
                             </Button>
@@ -354,7 +354,7 @@ const Products = () => {
                             <Button
                               size="sm"
                               className="w-full bg-green-600 hover:bg-green-700"
-                              onClick={() => window.open('product and details/INSTRUMENT CATALOGUE AMENDED.pdf', '_blank')}
+                              onClick={() => window.open('/product and details/INSTRUMENT CATALOGUE AMENDED.pdf', '_blank')}
                             >
                               View Details
                             </Button>
@@ -389,7 +389,7 @@ const Products = () => {
                             <Button
                               size="sm"
                               className="w-full bg-purple-600 hover:bg-purple-700"
-                              onClick={() => window.open('product and details/INSTRUMENT CATALOGUE AMENDED.pdf', '_blank')}
+                              onClick={() => window.open('/product and details/INSTRUMENT CATALOGUE AMENDED.pdf', '_blank')}
                             >
                               View Details
                             </Button>
