@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { Tool, Building, Utensils, Bed, Scissors, Settings, Check, MessageSquare, PenTool, Cog, Headphones, FaComments, FaPencilAlt, FaCog, FaHeadphones } from '@/components/Icons';
 import { Button } from '@/ui/button';
 import { toast } from '@/ui/use-toast';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Services = () => {
   const services = [
@@ -12,6 +12,7 @@ const Services = () => {
       icon: Tool,
       title: 'Medical Gas Pipeline Systems',
       description: 'Complete medical gas infrastructure including oxygen, nitrous oxide, medical air, and vacuum systems with centralized monitoring and alarm systems.',
+      image: '/product images/Gas papline.jpeg',
       features: ['Centralized gas supply manifold', 'Zone valve boxes with alarms', 'Pipeline testing & certification', 'Emergency shut-off systems', 'Pressure monitoring', 'Compliance with IS 13450'],
       applications: ['Hospitals', 'Clinics', 'Operation Theatres', 'ICUs', 'Emergency Departments'],
       benefits: ['Reliable gas supply', 'Safety compliance', 'Cost-effective operation', 'Easy maintenance']
@@ -20,6 +21,7 @@ const Services = () => {
       icon: Building,
       title: 'Modular Operation Theatres',
       description: 'State-of-the-art modular OT solutions with laminar air flow, integrated lighting, and advanced surgical equipment for optimal surgical environments.',
+      image: '/product images/modular operation theatre.png',
       features: ['Laminar air flow systems', 'Integrated LED lighting', 'Climate control systems', 'Modular wall systems', 'Surgical equipment integration', 'Fire safety systems'],
       applications: ['General Surgery', 'Cardiac Surgery', 'Orthopedic Surgery', 'Neurosurgery', 'Minimally Invasive Surgery'],
       benefits: ['Infection control', 'Optimal lighting', 'Flexible design', 'Easy maintenance']
@@ -28,6 +30,7 @@ const Services = () => {
       icon: Utensils,
       title: 'Laundry & Kitchen Equipment',
       description: 'Commercial-grade laundry and kitchen equipment designed for healthcare facilities with strict hygiene standards and energy efficiency.',
+      image: '/product images/Laundry & Kitchen Equipment.jpg',
       features: ['Industrial washing machines', 'Steam sterilizers', 'Commercial dishwashers', 'Food service equipment', 'Hygiene monitoring systems', 'Energy-efficient design'],
       applications: ['Hospital Kitchens', 'Laundry Services', 'Food Service Areas', 'Sterilization Units'],
       benefits: ['Hygiene compliance', 'Energy efficiency', 'Durable construction', 'Easy operation']
@@ -36,6 +39,7 @@ const Services = () => {
       icon: Bed,
       title: 'Medical & Non-Medical Furniture',
       description: 'Ergonomic and durable furniture solutions including patient beds, examination tables, and administrative furniture designed for healthcare environments.',
+      image: '/product images/medical furniture.png',
       features: ['Patient beds & stretchers', 'Examination tables', 'Medical cabinets', 'Administrative furniture', 'Seating solutions', 'Storage systems'],
       applications: ['Patient Rooms', 'Examination Areas', 'Administrative Offices', 'Waiting Areas', 'Treatment Rooms'],
       benefits: ['Patient comfort', 'Staff efficiency', 'Durable design', 'Easy maintenance']
@@ -44,6 +48,7 @@ const Services = () => {
       icon: Scissors,
       title: 'Hospital Curtains & Track Systems',
       description: 'Privacy curtains and track systems designed for healthcare environments with antimicrobial properties and easy maintenance.',
+      image: '/product images/patient care.png',
       features: ['Antimicrobial fabric curtains', 'Smooth track systems', 'Privacy solutions', 'Easy maintenance', 'Fire retardant materials', 'Custom sizing'],
       applications: ['Patient Rooms', 'Examination Areas', 'Emergency Departments', 'Recovery Rooms'],
       benefits: ['Infection control', 'Patient privacy', 'Easy cleaning', 'Durable materials']
@@ -52,14 +57,19 @@ const Services = () => {
       icon: Settings,
       title: 'Building Management Systems',
       description: 'Integrated BMS solutions for monitoring and controlling HVAC, lighting, security, and other building systems for optimal facility management.',
+      image: '/product images/Building Management Systems.jpg',
       features: ['HVAC control systems', 'Lighting management', 'Security integration', 'Energy monitoring', 'Fire safety systems', 'Maintenance scheduling'],
       applications: ['Hospital Buildings', 'Medical Centers', 'Administrative Buildings', 'Support Facilities'],
       benefits: ['Energy efficiency', 'Centralized control', 'Cost savings', 'Improved safety']
     },
   ];
 
+  const [expandedService, setExpandedService] = useState(null);
+
+  const navigate = useNavigate();
+
   const handleLearnMore = () => {
-    window.location.href = '/contact';
+    navigate('/contact');
   };
 
   return (
@@ -112,7 +122,7 @@ const Services = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
               <motion.div
                 key={index}
@@ -120,61 +130,79 @@ const Services = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="card-hover bg-white rounded-xl shadow-lg"
+                className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:scale-105"
               >
-                <div className="p-8 flex flex-col">
-                    <div className="flex items-center mb-4">
-                      <div className="inline-flex items-center justify-center w-12 h-12 bg-primary-blue text-white rounded-lg mr-4 shadow-md">
-                        <service.icon className="h-6 w-6" />
-                      </div>
-                      <h3 className="font-poppins text-xl font-bold text-gray-800">
-                        {service.title}
-                      </h3>
+                <img src={service.image} alt={service.title} className="w-full h-64 object-contain" />
+                <div className="p-8">
+                  <div className="flex items-center mb-4">
+                    <div className="inline-flex items-center justify-center w-12 h-12 bg-primary-blue text-white rounded-lg mr-4 shadow-md">
+                      <service.icon className="h-6 w-6" />
                     </div>
-                    <p className="text-gray-600 mb-6 flex-grow">{service.description}</p>
-                    
+                    <h3 className="font-poppins text-xl font-bold text-gray-800">
+                      {service.title}
+                    </h3>
+                  </div>
+                  <p className="text-gray-600 mb-6">{service.description}</p>
+
+                  <div className="mb-6">
+                    <h4 className="font-semibold text-gray-800 mb-3">Key Features:</h4>
+                    <ul className="space-y-2">
+                      {service.features.slice(0, expandedService === index ? service.features.length : 4).map((feature, featureIndex) => (
+                        <li key={featureIndex} className="flex items-center text-sm text-gray-600">
+                          <Check className="h-4 w-4 text-highlight-green mr-2" />
+                          {feature}
+                        </li>
+                      ))}
+                      {service.features.length > 4 && expandedService !== index && (
+                        <li className="text-sm text-primary-blue font-medium">
+                          +{service.features.length - 4} more features
+                        </li>
+                      )}
+                    </ul>
+                  </div>
+
+                  {expandedService === index && service.applications && (
                     <div className="mb-6">
-                      <h4 className="font-semibold text-gray-800 mb-3">Key Features:</h4>
+                      <h4 className="font-semibold text-gray-800 mb-3">Applications:</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {service.applications.map((app, appIndex) => (
+                          <span key={appIndex} className="px-3 py-1 bg-soft-cyan text-primary-blue text-xs rounded-full">
+                            {app}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {expandedService === index && service.benefits && (
+                    <div className="mb-6">
+                      <h4 className="font-semibold text-gray-800 mb-3">Benefits:</h4>
                       <ul className="space-y-2">
-                        {service.features.slice(0, 4).map((feature, featureIndex) => (
-                          <li key={featureIndex} className="flex items-center text-sm text-gray-600">
+                        {service.benefits.map((benefit, benefitIndex) => (
+                          <li key={benefitIndex} className="flex items-center text-sm text-gray-600">
                             <Check className="h-4 w-4 text-highlight-green mr-2" />
-                            {feature}
+                            {benefit}
                           </li>
                         ))}
-                        {service.features.length > 4 && (
-                          <li className="text-sm text-primary-blue font-medium">
-                            +{service.features.length - 4} more features
-                          </li>
-                        )}
                       </ul>
                     </div>
+                  )}
 
-                    {service.applications && (
-                      <div className="mb-6">
-                        <h4 className="font-semibold text-gray-800 mb-3">Applications:</h4>
-                        <div className="flex flex-wrap gap-2">
-                          {service.applications.slice(0, 3).map((app, appIndex) => (
-                            <span key={appIndex} className="px-3 py-1 bg-soft-cyan text-primary-blue text-xs rounded-full">
-                              {app}
-                            </span>
-                          ))}
-                          {service.applications.length > 3 && (
-                            <span className="px-3 py-1 bg-gray-200 text-gray-600 text-xs rounded-full">
-                              +{service.applications.length - 3} more
-                            </span>
-                          )}
-                        </div>
-                      </div>
-                    )}
-
+                  <div className="flex gap-2">
                     <Button
-                      className="w-full bg-primary-blue hover:bg-blue-700 mt-auto"
+                      className="flex-1 bg-primary-blue hover:bg-blue-700"
+                      onClick={() => setExpandedService(expandedService === index ? null : index)}
+                    >
+                      {expandedService === index ? 'Show Less' : 'Read More'}
+                    </Button>
+                    <Button
+                      className="flex-1 bg-accent-gold text-black hover:bg-yellow-400"
                       onClick={handleLearnMore}
                     >
                       Learn More
                     </Button>
                   </div>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -198,34 +226,37 @@ const Services = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {[
-              { icon: FaComments, title: 'Consultation', description: 'Understanding your specific requirements' },
-              { icon: FaPencilAlt, title: 'Design', description: 'Creating customized solutions with detailed planning' },
-              { icon: FaCog, title: 'Implementation', description: 'Professional installation with quality assurance' },
-              { icon: FaHeadphones, title: 'Support', description: 'Ongoing maintenance and technical support' },
-            ].map((process, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="text-center p-4"
-              >
-                <div className="relative inline-block">
-                  <div className="w-20 h-20 bg-light-bg rounded-full flex items-center justify-center mb-4">
-                    <div className="w-16 h-16 bg-primary-blue text-white rounded-full flex items-center justify-center shadow-lg">
-                      <process.icon className="h-6 w-6 text-white" />
+          <div className="relative max-w-5xl mx-auto">
+            <div className="absolute top-10 left-0 right-0 h-1 bg-primary-blue opacity-30"></div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+              {[
+                { icon: FaComments, title: 'Consultation', description: 'Understanding your specific requirements' },
+                { icon: FaPencilAlt, title: 'Design', description: 'Creating customized solutions with detailed planning' },
+                { icon: FaCog, title: 'Implementation', description: 'Professional installation with quality assurance' },
+                { icon: FaHeadphones, title: 'Support', description: 'Ongoing maintenance and technical support' },
+              ].map((process, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="text-center p-4"
+                >
+                  <div className="relative inline-block">
+                    <div className="w-20 h-20 bg-light-bg rounded-full flex items-center justify-center mb-4">
+                      <div className="w-16 h-16 bg-primary-blue text-white rounded-full flex items-center justify-center shadow-lg">
+                        <process.icon className="h-6 w-6 text-white" />
+                      </div>
                     </div>
                   </div>
-                </div>
-                <h3 className="font-poppins text-xl font-semibold text-gray-800 mb-3">
-                  {process.title}
-                </h3>
-                <p className="text-gray-600">{process.description}</p>
-              </motion.div>
-            ))}
+                  <h3 className="font-poppins text-xl font-semibold text-gray-800 mb-3">
+                    {process.title}
+                  </h3>
+                  <p className="text-gray-600">{process.description}</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -246,8 +277,8 @@ const Services = () => {
               Contact our experts for a free consultation and customized solution proposal
             </p>
             <Link to="/contact">
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 className="bg-accent-gold text-black hover:bg-yellow-400 glow-effect"
               >
                 Get Free Consultation

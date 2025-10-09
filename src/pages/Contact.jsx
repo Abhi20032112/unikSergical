@@ -145,7 +145,14 @@ const Contact = () => {
                   />
                 </div>
 
-                <Button type="submit" size="lg" className="w-full bg-primary-blue hover:bg-blue-700" disabled={isSubmitting}>
+                <Button
+                  type="submit"
+                  size="lg"
+                  className="w-full bg-gradient-to-r from-primary-blue to-blue-600 hover:from-blue-600 hover:to-blue-700 transition-transform transform hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-primary-blue/50"
+                  disabled={isSubmitting}
+                  whileTap={{ scale: 0.95 }}
+                  whileHover={{ scale: 1.05 }}
+                >
                   <Send className="mr-2 h-5 w-5" />
                   {isSubmitting ? 'Sending...' : 'Send Message'}
                 </Button>

@@ -120,24 +120,6 @@ const Clients = () => {
       testimonial: 'Comprehensive support for district-level healthcare infrastructure statewide.'
     },
     {
-      name: 'Ford Hospital',
-      location: 'Patna, Bihar',
-      type: 'Hospital',
-      projects: ['Medical Equipment'],
-      image: 'Modern hospital facility',
-      logo: '/logos/Ford Hospital.png',
-      testimonial: 'Reliable partners in healthcare solutions.'
-    },
-    {
-      name: 'Paras HMRI Hospital',
-      location: 'Patna, Bihar',
-      type: 'Hospital',
-      projects: ['Healthcare Facilities'],
-      image: 'Advanced medical center',
-      logo: '/logos/Paras HMRI Hospital.png',
-      testimonial: 'Quality healthcare solutions.'
-    },
-    {
       name: 'Patna Medical College & Hospital',
       location: 'Patna, Bihar',
       type: 'Medical College & Hospital',
@@ -145,15 +127,6 @@ const Clients = () => {
       image: 'Educational and healthcare institution',
       logo: '/logos/patna_medical_college_logo.jfif',
       testimonial: 'Trusted for medical education and healthcare.'
-    },
-    {
-      name: 'Ruban Memorial Hospital',
-      location: 'Patna, Bihar',
-      type: 'Hospital',
-      projects: ['Hospital Equipment'],
-      image: 'Specialized hospital services',
-      logo: '/logos/Ruban Memorial Hospital.png',
-      testimonial: 'Reliable partners in healthcare.'
     },
   ];
 
