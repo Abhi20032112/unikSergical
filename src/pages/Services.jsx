@@ -12,7 +12,7 @@ const Services = () => {
       icon: Tool,
       title: 'Medical Gas Pipeline Systems',
       description: 'Complete medical gas infrastructure including oxygen, nitrous oxide, medical air, and vacuum systems with centralized monitoring and alarm systems.',
-      image: '/product images/Gas papline.jpeg',
+      image: '/optimized_images/Gas papline.jpg',
       features: ['Centralized gas supply manifold', 'Zone valve boxes with alarms', 'Pipeline testing & certification', 'Emergency shut-off systems', 'Pressure monitoring', 'Compliance with IS 13450'],
       applications: ['Hospitals', 'Clinics', 'Operation Theatres', 'ICUs', 'Emergency Departments'],
       benefits: ['Reliable gas supply', 'Safety compliance', 'Cost-effective operation', 'Easy maintenance']
@@ -21,7 +21,7 @@ const Services = () => {
       icon: Building,
       title: 'Modular Operation Theatres',
       description: 'State-of-the-art modular OT solutions with laminar air flow, integrated lighting, and advanced surgical equipment for optimal surgical environments.',
-      image: '/product images/modular operation theatre.png',
+      image: '/optimized_images/modular operation theatre.jpg',
       features: ['Laminar air flow systems', 'Integrated LED lighting', 'Climate control systems', 'Modular wall systems', 'Surgical equipment integration', 'Fire safety systems'],
       applications: ['General Surgery', 'Cardiac Surgery', 'Orthopedic Surgery', 'Neurosurgery', 'Minimally Invasive Surgery'],
       benefits: ['Infection control', 'Optimal lighting', 'Flexible design', 'Easy maintenance']
@@ -30,7 +30,7 @@ const Services = () => {
       icon: Utensils,
       title: 'Laundry & Kitchen Equipment',
       description: 'Commercial-grade laundry and kitchen equipment designed for healthcare facilities with strict hygiene standards and energy efficiency.',
-      image: '/product images/Laundry & Kitchen Equipment.jpg',
+      image: '/optimized_images/Laundry & Kitchen Equipment.jpg',
       features: ['Industrial washing machines', 'Steam sterilizers', 'Commercial dishwashers', 'Food service equipment', 'Hygiene monitoring systems', 'Energy-efficient design'],
       applications: ['Hospital Kitchens', 'Laundry Services', 'Food Service Areas', 'Sterilization Units'],
       benefits: ['Hygiene compliance', 'Energy efficiency', 'Durable construction', 'Easy operation']
@@ -39,7 +39,7 @@ const Services = () => {
       icon: Bed,
       title: 'Medical & Non-Medical Furniture',
       description: 'Ergonomic and durable furniture solutions including patient beds, examination tables, and administrative furniture designed for healthcare environments.',
-      image: '/product images/medical furniture.png',
+      image: '/optimized_images/medical furniture.jpg',
       features: ['Patient beds & stretchers', 'Examination tables', 'Medical cabinets', 'Administrative furniture', 'Seating solutions', 'Storage systems'],
       applications: ['Patient Rooms', 'Examination Areas', 'Administrative Offices', 'Waiting Areas', 'Treatment Rooms'],
       benefits: ['Patient comfort', 'Staff efficiency', 'Durable design', 'Easy maintenance']
@@ -48,7 +48,7 @@ const Services = () => {
       icon: Scissors,
       title: 'Hospital Curtains & Track Systems',
       description: 'Privacy curtains and track systems designed for healthcare environments with antimicrobial properties and easy maintenance.',
-      image: '/product images/patient care.png',
+      image: '/optimized_images/patient care.jpg',
       features: ['Antimicrobial fabric curtains', 'Smooth track systems', 'Privacy solutions', 'Easy maintenance', 'Fire retardant materials', 'Custom sizing'],
       applications: ['Patient Rooms', 'Examination Areas', 'Emergency Departments', 'Recovery Rooms'],
       benefits: ['Infection control', 'Patient privacy', 'Easy cleaning', 'Durable materials']
@@ -57,7 +57,7 @@ const Services = () => {
       icon: Settings,
       title: 'Building Management Systems',
       description: 'Integrated BMS solutions for monitoring and controlling HVAC, lighting, security, and other building systems for optimal facility management.',
-      image: '/product images/Building Management Systems.jpg',
+      image: '/optimized_images/Building Management Systems.jpg',
       features: ['HVAC control systems', 'Lighting management', 'Security integration', 'Energy monitoring', 'Fire safety systems', 'Maintenance scheduling'],
       applications: ['Hospital Buildings', 'Medical Centers', 'Administrative Buildings', 'Support Facilities'],
       benefits: ['Energy efficiency', 'Centralized control', 'Cost savings', 'Improved safety']
@@ -132,7 +132,7 @@ const Services = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:scale-105"
               >
-                <img src={service.image} alt={service.title} className="w-full h-64 object-contain" />
+                <img src={service.image.replace('/product images/', '/optimized_images/')} alt={service.title} className="w-full h-64 object-contain" loading="lazy" />
                 <div className="p-8">
                   <div className="flex items-center mb-4">
                     <div className="inline-flex items-center justify-center w-12 h-12 bg-primary-blue text-white rounded-lg mr-4 shadow-md">
