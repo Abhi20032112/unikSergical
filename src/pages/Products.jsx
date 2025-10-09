@@ -145,21 +145,31 @@ const Products = () => {
 
 
 
-  const documentList = [
-    { name: 'Furniture Catalog', file: '/product and details/FURNITURE CATALOG AMENDED.pdf' },
-    { name: 'Instrument Catalogue', file: '/product and details/INSTRUMENT CATALOGUE AMENDED.pdf' },
-    { name: 'Company Brochure', file: '/product and details/Unik-Surgical-Pioneering-Medical-Equipment-and-Furniture-Solutions (1).pdf' },
-    { name: 'ISO 13485 Certificate', file: '/product and details/IAF ISO 13485 2024.pdf' },
-    { name: 'Manufacturing License', file: '/product and details/IN54426A UNIK SURGICAL PRIVAT...pdf' },
-    { name: 'NSIC Certificate', file: '/product and details/nsic unik.pdf' },
-    { name: 'CEO Profile', file: '/product and details/Prince CEO USPL.pdf' },
-    { name: 'Certificate CL 8251', file: '/product and details/CL_8251.pdf' },
-    { name: 'Form MD42 8251', file: '/product and details/Form_MD42_ 8251.pdf' },
-    { name: 'Certificate 240716.USQD12', file: '/product and details/240716.USQD12.pdf' },
-    { name: 'Cover Letter', file: '/product and details/uploadCoverLetter.pdf' },
-    { name: 'Permission Document', file: '/product and details/uploadpermission.compressed.pdf' },
-    { name: 'Product List Document', file: '/product and details/New Microsoft Word Document (3) (1).docx' },
-  ];
+  const documentCategories = {
+    catalogs: [
+      { name: 'Furniture Catalog', file: '/product and details/FURNITURE CATALOG AMENDED.pdf' },
+      { name: 'Instrument Catalogue', file: '/product and details/INSTRUMENT CATALOGUE AMENDED.pdf' },
+      { name: 'Company Brochure', file: '/product and details/Unik-Surgical-Pioneering-Medical-Equipment-and-Furniture-Solutions (1).pdf' },
+    ],
+    certificates: [
+      { name: 'ISO 13485 Certificate', file: '/product and details/IAF ISO 13485 2024.pdf' },
+      { name: 'NSIC Certificate', file: '/product and details/nsic unik.pdf' },
+      { name: 'Certificate CL 8251', file: '/product and details/CL_8251.pdf' },
+      { name: 'Certificate 240716.USQD12', file: '/product and details/240716.USQD12.pdf' },
+    ],
+    licenses: [
+      { name: 'Manufacturing License', file: '/product and details/IN54426A UNIK SURGICAL PRIVAT...pdf' },
+      { name: 'Form MD42 8251', file: '/product and details/Form_MD42_ 8251.pdf' },
+      { name: 'Cover Letter', file: '/product and details/uploadCoverLetter.pdf' },
+      { name: 'Permission Document', file: '/product and details/uploadpermission.compressed.pdf' },
+    ],
+    profiles: [
+      { name: 'CEO Profile', file: '/product and details/Prince CEO USPL.pdf' },
+    ],
+    others: [
+      { name: 'Product List Document', file: '/product and details/New Microsoft Word Document (3) (1).docx' },
+    ]
+  };
 
   const handleDownloadDocument = (filePath, fileName) => {
     const link = document.createElement('a');
@@ -438,33 +448,56 @@ const Products = () => {
         </div>
       </section>
 
-          <section className="py-20 bg-light-bg">
-            <div className="container mx-auto px-4 text-center">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="max-w-4xl mx-auto"
-              >
-                <h2 className="font-poppins text-4xl font-bold text-gray-800 mb-6 flex items-center justify-center">
-                  <Download className="mr-4 h-10 w-10 text-primary-blue" />
-                  Download All Documents
-                </h2>
-                <p className="text-xl text-gray-600 mb-8">
-                  Access our complete catalog of products, certificates, brochures, and company documents for detailed information.
-                </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {documentList.map((doc, index) => (
-                    <Button key={index} size="lg" className="bg-primary-blue hover:bg-blue-700" onClick={() => handleDownloadDocument(doc.file, doc.name)}>
-                      <Download className="mr-2 h-5 w-5" />
-                      {doc.name}
-                    </Button>
-                  ))}
-                </div>
-              </motion.div>
+      <section className="py-20 bg-light-bg">
+        <div className="container mx-auto px-4 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-4xl mx-auto"
+          >
+            <h2 className="font-poppins text-4xl font-bold text-gray-800 mb-6 flex items-center justify-center">
+              <Download className="mr-4 h-10 w-10 text-primary-blue" />
+              Download All Documents
+            </h2>
+            <p className="text-xl text-gray-600 mb-8">
+              Access our complete catalog of products, certificates, brochures, and company documents for detailed information.
+            </p>
+            <div className="space-y-12">
+              {Object.entries(documentCategories).map(([category, docs], categoryIndex) => (
+                <motion.div
+                  key={category}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: categoryIndex * 0.2 }}
+                >
+                  <h3 className="font-poppins text-2xl font-bold text-gray-800 mb-6 capitalize text-left">
+                    {category === 'catalogs' ? 'Product Catalogs' : category === 'certificates' ? 'Certificates' : category === 'licenses' ? 'Licenses & Forms' : category === 'profiles' ? 'Company Profiles' : 'Other Documents'}
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {docs.map((doc, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: (categoryIndex * 0.2) + (index * 0.1) }}
+                      >
+                        <Button size="lg" className="w-full bg-primary-blue hover:bg-blue-700 hover:scale-105 transition-all duration-300" onClick={() => handleDownloadDocument(doc.file, doc.name)}>
+                          <Download className="mr-2 h-5 w-5" />
+                          {doc.name}
+                        </Button>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              ))}
             </div>
-          </section>
+          </motion.div>
+        </div>
+      </section>
 
     </motion.div>
   );

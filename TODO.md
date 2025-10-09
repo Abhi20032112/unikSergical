@@ -1,3 +1,5 @@
-- [x] Modify src/pages/Products.jsx: Change "View Details" button onClick to open the relevant PDF catalog using window.open()
-- [x] Modify src/pages/Contact.jsx: Integrate EmailJS for sending emails with attachments
-- [ ] Test the changes by running the development server and verifying PDF opens on "View Details" click and form submits to Formspree
+# TODO: Improve Download All Documents Section
+
+- [x] Add stagger animations to the document download buttons
+- [x] Improve the structure and layout of the section (categorized documents)
+- [x] Ensure well-structured PDF downloads (organized by categories with animations)

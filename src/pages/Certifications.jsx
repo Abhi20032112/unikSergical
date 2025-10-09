@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { Award, Shield, CheckCircle, FileText } from '@/components/Icons';
 
 const Certifications = () => {
@@ -223,18 +224,18 @@ const Certifications = () => {
               safe, reliable, and high-quality healthcare solutions that you can trust.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="/contact"
+              <Link
+                to="/contact"
                 className="bg-accent-gold text-black px-8 py-3 rounded-lg font-semibold hover:bg-yellow-400 transition-colors inline-block"
               >
                 Request Certification Details
-              </a>
-              <a
-                href="/products"
+              </Link>
+              <Link
+                to="/products"
                 className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary-blue transition-colors inline-block"
               >
                 View Certified Products
-              </a>
+              </Link>
             </div>
           </motion.div>
         </div>
