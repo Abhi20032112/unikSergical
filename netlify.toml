@@ -1,0 +1,7 @@
+[dev]
+  command = "npm run dev"
+  port = 3003
+  targetPort = 3004
+
+[build]
+  functions = "functions"
