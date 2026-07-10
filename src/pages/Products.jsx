@@ -1,15 +1,44 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
-import { Download, Box, ChevronDown, Bed, Scissors, Cog, PenTool, Building, FileText } from '@/components/Icons';
+import { Box, ChevronDown, Bed, Scissors, Cog, PenTool, Building, FileText, Eye } from '@/components/Icons';
 import { Button } from '@/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/ui/tabs';
 import { toast } from '@/ui/use-toast';
 import { useLocation } from 'react-router-dom';
 
+const latestProductCatalogs = [
+  {
+    name: 'CSSD',
+    file: '/product and details/latest files 10 july/CSSD.pdf',
+    description: 'Central sterile supply department product catalog.'
+  },
+  {
+    name: 'Kitchen Equipment',
+    file: '/product and details/latest files 10 july/Kitchen Equipment.pdf',
+    description: 'Commercial kitchen equipment catalog for healthcare facilities.'
+  },
+  {
+    name: 'Laundry',
+    file: '/product and details/latest files 10 july/LAUNDRY.pdf',
+    description: 'Laundry equipment and facility support catalog.'
+  },
+  {
+    name: 'Medical Gas Pipeline',
+    file: '/product and details/latest files 10 july/MEDICAL GAS PIPELINE.pdf',
+    description: 'Medical gas pipeline system catalog.'
+  },
+  {
+    name: 'Modular Operation Theatre',
+    file: '/product and details/latest files 10 july/MODULAR  OPERATION THEATRE.pdf',
+    description: 'Modular operation theatre solutions catalog.'
+  }
+];
+
 const Products = () => {
   const location = useLocation();
   const [activeTab, setActiveTab] = useState('furniture');
+  const [selectedCatalog, setSelectedCatalog] = useState(latestProductCatalogs[0]);
 
   const [openMedical, setOpenMedical] = useState(true);
   const [openNonMedical, setOpenNonMedical] = useState(true);
@@ -120,30 +149,6 @@ const Products = () => {
       { name: "Torch Light (Pen Type)", icon: Cog, description: "Pen-type torch lights for medical examinations and procedures." }
     ]
   };
-
-  const handleDownloadCatalog = (type = 'furniture') => {
-    const productFiles = {
-      furniture: '/product and details/FURNITURE CATALOG AMENDED.pdf',
-      instruments: '/product and details/INSTRUMENT CATALOGUE AMENDED.pdf'
-    };
-
-    const fileName = productFiles[type] || productFiles.furniture;
-
-    // Create a temporary link to download the file
-    const link = document.createElement('a');
-    link.href = fileName;
-    link.download = type === 'furniture' ? 'Our_Furniture_Products.pdf' : 'Our_Instrument_Products.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-
-    toast({
-      title: "Our Products Download",
-      description: `Downloading Our ${type === 'furniture' ? 'Furniture' : 'Instrument'} Products...`,
-    });
-  };
-
-
 
   const documentCategories = {
     catalogs: [
@@ -506,6 +511,73 @@ const Products = () => {
 
 
 
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-3xl mx-auto mb-12"
+          >
+            <h2 className="font-poppins text-4xl font-bold text-gray-800 mb-4 flex items-center justify-center">
+              <FileText className="mr-4 h-10 w-10 text-primary-blue" />
+              Product Catalogs
+            </h2>
+            <p className="text-lg text-gray-600">
+              View our latest product catalogs directly on the page.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            <div className="lg:col-span-1 space-y-3">
+              {latestProductCatalogs.map((catalog) => (
+                <button
+                  key={catalog.file}
+                  type="button"
+                  onClick={() => setSelectedCatalog(catalog)}
+                  className={`w-full text-left bg-white border rounded-lg p-4 shadow-sm transition-all ${
+                    selectedCatalog.file === catalog.file
+                      ? 'border-primary-blue ring-2 ring-primary-blue/20'
+                      : 'border-gray-200 hover:border-primary-blue/40 hover:shadow-md'
+                  }`}
+                >
+                  <span className="flex items-start">
+                    <span className="inline-flex items-center justify-center w-10 h-10 bg-blue-50 text-primary-blue rounded-lg mr-3 shrink-0">
+                      <Eye className="h-5 w-5" />
+                    </span>
+                    <span>
+                      <span className="block font-semibold text-gray-800">{catalog.name}</span>
+                      <span className="block text-sm text-gray-600 mt-1">{catalog.description}</span>
+                    </span>
+                  </span>
+                </button>
+              ))}
+            </div>
+
+            <div className="lg:col-span-3">
+              <div className="bg-gray-900 rounded-lg overflow-hidden shadow-xl border border-gray-200">
+                <div className="flex items-center justify-between bg-gray-800 px-5 py-4">
+                  <h3 className="font-poppins text-lg font-semibold text-white">{selectedCatalog.name}</h3>
+                  <span className="text-xs uppercase tracking-wide text-gray-300">View Only</span>
+                </div>
+                <div className="bg-gray-100" onContextMenu={(event) => event.preventDefault()}>
+                  <iframe
+                    title={`${selectedCatalog.name} catalog`}
+                    src={`${selectedCatalog.file}#toolbar=0&navpanes=0&scrollbar=1&view=FitH`}
+                    className="w-full h-[72vh] min-h-[520px] bg-white"
+                    loading="lazy"
+                    sandbox="allow-same-origin allow-scripts"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
       <section className="py-20 bg-light-bg">
         <div className="container mx-auto px-4 text-center">
           <motion.div
@@ -536,16 +608,6 @@ const Products = () => {
                 <h3 className="font-semibold text-primary-blue mb-2">ISO 13485 Quality</h3>
                 <p className="text-sm text-gray-600">International standard certified products</p>
               </div>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-primary-blue hover:bg-blue-700" onClick={() => handleDownloadCatalog('furniture')}>
-                <Download className="mr-2 h-5 w-5" />
-                Download Our Furniture Products
-              </Button>
-              <Button size="lg" className="bg-soft-cyan hover:bg-cyan-600" onClick={() => handleDownloadCatalog('instruments')}>
-                <Download className="mr-2 h-5 w-5" />
-                Download Our Instrument Products
-              </Button>
             </div>
           </motion.div>
         </div>
