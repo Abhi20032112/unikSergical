@@ -14,7 +14,7 @@ const Contact = () => {
     {
       icon: Phone,
       title: 'Phone',
-      details: ['0612-4556038', '+91 7319772053'],
+      details: ['0612-3562111', '+91 7319772053'],
       color: 'text-green-600'
     },
     {

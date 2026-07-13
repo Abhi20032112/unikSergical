@@ -47,6 +47,7 @@ import {
   Utensils,
   Activity,
   Search,
+  ExternalLink,
 } from 'lucide-react';
 
 // Import WhatsApp icon from react-icons/fa
@@ -64,6 +65,7 @@ const FaHeadphonesIcon = ({ className }) => <FontAwesomeIcon icon={faHeadphones}
 
 export {
   Menu,
+  ExternalLink,
   X,
   Home,
   Info,
@@ -117,5 +119,4 @@ export {
   FaCogIcon as FaCog,
   FaHeadphonesIcon as FaHeadphones,
 };
-
 

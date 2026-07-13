@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
-import { Box, ChevronDown, Bed, Scissors, Cog, PenTool, Building, FileText, Eye } from '@/components/Icons';
+import { Box, ChevronDown, Bed, Scissors, Cog, PenTool, Building, FileText, Eye, ExternalLink } from '@/components/Icons';
 import { Button } from '@/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/ui/tabs';
 import { toast } from '@/ui/use-toast';
@@ -39,6 +39,7 @@ const Products = () => {
   const location = useLocation();
   const [activeTab, setActiveTab] = useState('furniture');
   const [selectedCatalog, setSelectedCatalog] = useState(latestProductCatalogs[0]);
+  const selectedCatalogUrl = encodeURI(selectedCatalog.file);
 
   const [openMedical, setOpenMedical] = useState(true);
   const [openNonMedical, setOpenNonMedical] = useState(true);
@@ -557,17 +558,24 @@ const Products = () => {
 
             <div className="lg:col-span-3">
               <div className="bg-gray-900 rounded-lg overflow-hidden shadow-xl border border-gray-200">
-                <div className="flex items-center justify-between bg-gray-800 px-5 py-4">
+                <div className="flex flex-wrap items-center justify-between gap-3 bg-gray-800 px-5 py-4">
                   <h3 className="font-poppins text-lg font-semibold text-white">{selectedCatalog.name}</h3>
-                  <span className="text-xs uppercase tracking-wide text-gray-300">View Only</span>
+                  <a
+                    href={selectedCatalogUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center rounded-md bg-white/10 px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-white/20"
+                  >
+                    <ExternalLink className="mr-2 h-4 w-4" />
+                    Open PDF
+                  </a>
                 </div>
                 <div className="bg-gray-100" onContextMenu={(event) => event.preventDefault()}>
                   <iframe
                     title={`${selectedCatalog.name} catalog`}
-                    src={`${selectedCatalog.file}#toolbar=0&navpanes=0&scrollbar=1&view=FitH`}
+                    src={`${selectedCatalogUrl}#toolbar=0&navpanes=0&scrollbar=1&view=FitH`}
                     className="w-full h-[72vh] min-h-[520px] bg-white"
                     loading="lazy"
-                    sandbox="allow-same-origin allow-scripts"
                   />
                 </div>
               </div>
