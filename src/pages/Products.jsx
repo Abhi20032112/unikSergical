@@ -39,6 +39,7 @@ const Products = () => {
   const location = useLocation();
   const [activeTab, setActiveTab] = useState('furniture');
   const [selectedCatalog, setSelectedCatalog] = useState(latestProductCatalogs[0]);
+  const [isCatalogLoading, setIsCatalogLoading] = useState(true);
   const selectedCatalogUrl = encodeURI(selectedCatalog.file);
 
   const [openMedical, setOpenMedical] = useState(true);
@@ -536,7 +537,12 @@ const Products = () => {
                 <button
                   key={catalog.file}
                   type="button"
-                  onClick={() => setSelectedCatalog(catalog)}
+                  onClick={() => {
+                    if (catalog.file !== selectedCatalog.file) {
+                      setIsCatalogLoading(true);
+                      setSelectedCatalog(catalog);
+                    }
+                  }}
                   className={`w-full text-left bg-white border rounded-lg p-4 shadow-sm transition-all ${
                     selectedCatalog.file === catalog.file
                       ? 'border-primary-blue ring-2 ring-primary-blue/20'
@@ -570,12 +576,22 @@ const Products = () => {
                     Open PDF
                   </a>
                 </div>
-                <div className="bg-gray-100" onContextMenu={(event) => event.preventDefault()}>
+                <div className="relative bg-gray-100" onContextMenu={(event) => event.preventDefault()}>
+                  {isCatalogLoading && (
+                    <div className="absolute inset-0 z-10 flex items-center justify-center bg-white">
+                      <div className="text-center">
+                        <div className="mx-auto h-10 w-10 animate-spin rounded-full border-4 border-gray-200 border-t-primary-blue" />
+                        <p className="mt-4 text-sm font-medium text-gray-600">Loading {selectedCatalog.name}…</p>
+                      </div>
+                    </div>
+                  )}
                   <iframe
+                    key={selectedCatalog.file}
                     title={`${selectedCatalog.name} catalog`}
                     src={`${selectedCatalogUrl}#toolbar=0&navpanes=0&scrollbar=1&view=FitH`}
                     className="w-full h-[72vh] min-h-[520px] bg-white"
                     loading="lazy"
+                    onLoad={() => setIsCatalogLoading(false)}
                   />
                 </div>
               </div>
