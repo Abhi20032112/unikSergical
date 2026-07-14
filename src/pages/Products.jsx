@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
-import { Box, ChevronDown, Bed, Scissors, Cog, PenTool, Building, FileText, Eye, ExternalLink } from '@/components/Icons';
+import { Box, ChevronDown, Bed, Scissors, Cog, PenTool, Building, FileText, Eye } from '@/components/Icons';
 import { Button } from '@/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/ui/tabs';
 import { toast } from '@/ui/use-toast';
@@ -84,6 +84,18 @@ const Products = () => {
       setActiveTab('furniture');
     }
   }, [location.hash]);
+
+  useEffect(() => {
+    const preventDocumentActions = (event) => {
+      const key = event.key.toLowerCase();
+      if ((event.ctrlKey || event.metaKey) && (key === 's' || key === 'p')) {
+        event.preventDefault();
+      }
+    };
+
+    window.addEventListener('keydown', preventDocumentActions);
+    return () => window.removeEventListener('keydown', preventDocumentActions);
+  }, []);
 
   const furnitureCatalog = {
     medical: [
@@ -566,15 +578,7 @@ const Products = () => {
               <div className="bg-gray-900 rounded-lg overflow-hidden shadow-xl border border-gray-200">
                 <div className="flex flex-wrap items-center justify-between gap-3 bg-gray-800 px-5 py-4">
                   <h3 className="font-poppins text-lg font-semibold text-white">{selectedCatalog.name}</h3>
-                  <a
-                    href={selectedCatalogUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center rounded-md bg-white/10 px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-white/20"
-                  >
-                    <ExternalLink className="mr-2 h-4 w-4" />
-                    Open PDF
-                  </a>
+                  <span className="text-xs uppercase tracking-wide text-gray-300">View only</span>
                 </div>
                 <div className="relative bg-gray-100" onContextMenu={(event) => event.preventDefault()}>
                   {isCatalogLoading && (
@@ -588,7 +592,7 @@ const Products = () => {
                   <iframe
                     key={selectedCatalog.file}
                     title={`${selectedCatalog.name} catalog`}
-                    src={`${selectedCatalogUrl}#toolbar=0&navpanes=0&scrollbar=1&view=FitH`}
+                    src={`${selectedCatalogUrl}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
                     className="w-full h-[72vh] min-h-[520px] bg-white"
                     loading="lazy"
                     onLoad={() => setIsCatalogLoading(false)}
