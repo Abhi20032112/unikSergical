@@ -48,6 +48,18 @@ const Products = () => {
   const [openDiagnostic, setOpenDiagnostic] = useState(true);
   const [openSupport, setOpenSupport] = useState(true);
 
+  const toggleDropdownWithoutJump = (event, updateDropdowns) => {
+    const trigger = event.currentTarget;
+    const previousTop = trigger.getBoundingClientRect().top;
+
+    updateDropdowns();
+
+    requestAnimationFrame(() => {
+      const currentTop = trigger.getBoundingClientRect().top;
+      window.scrollBy({ top: currentTop - previousTop, left: 0, behavior: 'auto' });
+    });
+  };
+
   useEffect(() => {
     if (location.hash === '#surgical-instruments-section') {
       setActiveTab('instruments');
@@ -332,7 +344,7 @@ const Products = () => {
                         WE ARE MANUFACTURER
                       </span>
                     </div>
-                    <h3 className="font-poppins text-3xl font-bold text-gray-800 hover:text-gray-800 mb-8 text-center cursor-pointer flex items-center justify-center" onClick={() => { setOpenMedical(!openMedical); setOpenNonMedical(false); }}>
+                    <h3 className="font-poppins text-3xl font-bold text-gray-800 hover:text-gray-800 mb-8 text-center cursor-pointer flex items-center justify-center" onClick={(event) => toggleDropdownWithoutJump(event, () => { setOpenMedical(!openMedical); setOpenNonMedical(false); })}>
                       Medical Furniture <ChevronDown className={`ml-2 transition-transform ${openMedical ? 'rotate-180' : ''}`} />
                     </h3>
                     {openMedical && (
@@ -367,7 +379,7 @@ const Products = () => {
                   </div>
 
                   <div id="non-medical-furniture">
-                    <h3 className="font-poppins text-3xl font-bold text-gray-800 hover:text-gray-800 mb-8 text-center cursor-pointer flex items-center justify-center" onClick={() => { setOpenMedical(false); setOpenNonMedical(!openNonMedical); }}>
+                    <h3 className="font-poppins text-3xl font-bold text-gray-800 hover:text-gray-800 mb-8 text-center cursor-pointer flex items-center justify-center" onClick={(event) => toggleDropdownWithoutJump(event, () => { setOpenMedical(false); setOpenNonMedical(!openNonMedical); })}>
                       Non-Medical Furniture <ChevronDown className={`ml-2 transition-transform ${openNonMedical ? 'rotate-180' : ''}`} />
                     </h3>
                     {openNonMedical && (
@@ -413,7 +425,7 @@ const Products = () => {
                         WE ARE MANUFACTURER
                       </span>
                     </div>
-                    <h3 className="font-poppins text-3xl font-bold text-gray-800 hover:text-gray-800 mb-8 text-center cursor-pointer flex items-center justify-center" onClick={() => { setOpenSurgical(!openSurgical); setOpenDiagnostic(false); setOpenSupport(false); }}>
+                    <h3 className="font-poppins text-3xl font-bold text-gray-800 hover:text-gray-800 mb-8 text-center cursor-pointer flex items-center justify-center" onClick={(event) => toggleDropdownWithoutJump(event, () => { setOpenSurgical(!openSurgical); setOpenDiagnostic(false); setOpenSupport(false); })}>
                       Surgical Instruments <ChevronDown className={`ml-2 transition-transform ${openSurgical ? 'rotate-180' : ''}`} />
                     </h3>
                     {openSurgical && (
@@ -448,7 +460,7 @@ const Products = () => {
                   </div>
 
                   <div id="diagnostic-instruments-section">
-                    <h3 className="font-poppins text-3xl font-bold text-gray-800 hover:text-gray-800 mb-8 text-center cursor-pointer flex items-center justify-center" onClick={() => { setOpenSurgical(false); setOpenDiagnostic(!openDiagnostic); setOpenSupport(false); }}>
+                    <h3 className="font-poppins text-3xl font-bold text-gray-800 hover:text-gray-800 mb-8 text-center cursor-pointer flex items-center justify-center" onClick={(event) => toggleDropdownWithoutJump(event, () => { setOpenSurgical(false); setOpenDiagnostic(!openDiagnostic); setOpenSupport(false); })}>
                       Diagnostic Equipment <ChevronDown className={`ml-2 transition-transform ${openDiagnostic ? 'rotate-180' : ''}`} />
                     </h3>
                     {openDiagnostic && (
@@ -483,7 +495,7 @@ const Products = () => {
                   </div>
 
                   <div id="support-instruments-section">
-                    <h3 className="font-poppins text-3xl font-bold text-gray-800 hover:text-gray-800 mb-8 text-center cursor-pointer flex items-center justify-center" onClick={() => { setOpenSurgical(false); setOpenDiagnostic(false); setOpenSupport(!openSupport); }}>
+                    <h3 className="font-poppins text-3xl font-bold text-gray-800 hover:text-gray-800 mb-8 text-center cursor-pointer flex items-center justify-center" onClick={(event) => toggleDropdownWithoutJump(event, () => { setOpenSurgical(false); setOpenDiagnostic(false); setOpenSupport(!openSupport); })}>
                       Support Equipment <ChevronDown className={`ml-2 transition-transform ${openSupport ? 'rotate-180' : ''}`} />
                     </h3>
                     {openSupport && (
