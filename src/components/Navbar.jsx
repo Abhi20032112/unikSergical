@@ -23,22 +23,9 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    if (location.pathname === '/products') {
-      const hash = location.hash;
-      if (hash.includes('surgical-instruments') || hash.includes('diagnostic-instruments') || hash.includes('support-instruments')) {
-        setOpenCategory('Instrument');
-        setProductDropdown('Products');
-      } else if (hash.includes('medical-furniture') || hash.includes('non-medical-furniture')) {
-        setOpenCategory('Furniture');
-        setProductDropdown('Products');
-      } else {
-        setOpenCategory(null);
-        setProductDropdown('Products'); // Keep main dropdown open on products page
-      }
-    } else {
-      setOpenCategory(null);
-      setProductDropdown(null);
-    }
+    setOpenCategory(null);
+    setProductDropdown(null);
+    setIsOpen(false);
   }, [location]);
 
   const navItems = [
@@ -71,10 +58,10 @@ const Navbar = () => {
   ];
 
   const handleProductClick = (path) => {
-    navigate(path);
-    setProductDropdown(false);
+    setProductDropdown(null);
     setIsOpen(false);
     setOpenCategory(null);
+    navigate(path);
   };
 
   const navContainerVariants = {
@@ -218,7 +205,7 @@ const Navbar = () => {
             className="lg:hidden p-2 text-white bg-white/20 rounded-md border border-white/40 shadow-lg"
             onClick={() => {
               setIsOpen(!isOpen);
-              setProductDropdown(false);
+              setProductDropdown(null);
               setOpenCategory(null);
             }}
             whileHover={{ scale: 1.1, rotate: 5, boxShadow: "0 0 20px rgba(255,255,255,0.5)" }}
