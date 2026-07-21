@@ -597,7 +597,7 @@ const Products = () => {
                     <div className="absolute inset-0 z-10 flex items-center justify-center bg-white">
                       <div className="text-center">
                         <div className="mx-auto h-10 w-10 animate-spin rounded-full border-4 border-gray-200 border-t-primary-blue" />
-                        <p className="mt-4 text-sm font-medium text-gray-600">Loading {selectedCatalog.name}…</p>
+                        <p className="mt-4 text-sm font-medium text-gray-600">Loading {selectedCatalog.name}...</p>
                       </div>
                     </div>
                   )}
@@ -606,7 +606,7 @@ const Products = () => {
                     title={`${selectedCatalog.name} catalog`}
                     src={`${selectedCatalogUrl}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
                     className="w-full h-[72vh] min-h-[520px] bg-white"
-                    loading="lazy"
+                    loading="eager"
                     onLoad={() => setIsCatalogLoading(false)}
                   />
                 </div>
